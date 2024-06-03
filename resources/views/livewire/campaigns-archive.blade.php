@@ -10,43 +10,11 @@
                                     <div class="mx-1 align-self-center min-w-0">
                                         <div class="font-size-20 line-height-28 font-size-md-24 line-height-md-32">
                                             <div class="d-flex flex-wrap">
-                                                <div class="min-w-0 mr-1 text-ellipsis">Campaigns</div>
+                                                <div class="min-w-0 mr-1 text-ellipsis">Campaigns Archive</div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="mx-1 d-none d-md-block">
-                                        <div class="d-none d-md-flex align-items-center mx-minus-2">
-                                            <div class="mx-2">
-                                                <a wire:click="openModal" class="btn btn-primary">
-                                                    <div class="d-flex">
-                                                        <div class="mr-2">
-                                                            <div class="icon-slot icon-slot-18">
-                                                                <div class="p-abs centered font-size-18">
-                                                                    <svg svg-inline="" focusable="false"
-                                                                        role="presentation"
-                                                                        xmlns="http://www.w3.org/2000/svg"
-                                                                        width="24" height="24"
-                                                                        viewBox="0 0 24 24" fill="none"
-                                                                        stroke="currentColor" stroke-width="1.4"
-                                                                        stroke-linecap="round" stroke-linejoin="round"
-                                                                        class="icon-stroke">
-                                                                        <circle cx="12" cy="12" r="10">
-                                                                        </circle>
-                                                                        <line x1="12" y1="8"
-                                                                            x2="12" y2="16"></line>
-                                                                        <line x1="8" y1="12"
-                                                                            x2="16" y2="12"></line>
-                                                                    </svg>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div>New campaign</div>
-                                                        
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    
                                     <div class="mx-1 d-md-none">
                                         <div class="d-flex ml-minus-3">
                                             <div class="ml-3">
@@ -164,42 +132,20 @@
                                                             <div data-v-bba3536e=""
                                                                 class="d-flex align-items-center mx-minus-2 justify-content-between">
                                                                 <div data-v-bba3536e="" class="d-none d-md-block mx-2">
-                                                                    <a href="/campaigns-archive"
+                                                                    <a href="/campaigns"
                                                                         class="d-block text-nowrap cursor-pointer text-gray-100-hover-gray-85 text-nodecor py-2 ml-4 focus-outline"
                                                                         data-v-bba3536e="">
                                                                         <div class="d-flex align-items-center">
                                                                             <div class="mr-2">
                                                                                 <div
-                                                                                    class="icon-slot icon-slot-18 d-inline-block">
+                                                                                    class="">
                                                                                     <div
                                                                                         class="p-abs centered font-size-18">
-                                                                                        <svg svg-inline=""
-                                                                                            focusable="false"
-                                                                                            role="presentation"
-                                                                                            xmlns="http://www.w3.org/2000/svg"
-                                                                                            width="24" height="24"
-                                                                                            viewBox="0 0 24 24"
-                                                                                            fill="none"
-                                                                                            stroke="currentColor"
-                                                                                            stroke-width="1.4"
-                                                                                            stroke-linecap="round"
-                                                                                            stroke-linejoin="round"
-                                                                                            class="icon-stroke d-block">
-                                                                                            <polyline
-                                                                                                points="21 8 21 21 3 21 3 8">
-                                                                                            </polyline>
-                                                                                            <rect x="1" y="3"
-                                                                                                width="22"
-                                                                                                height="5"></rect>
-                                                                                            <line x1="10"
-                                                                                                y1="12"
-                                                                                                x2="14"
-                                                                                                y2="12"></line>
-                                                                                        </svg>
+                                                                                        
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
-                                                                            <div class="min-w-0 text-truncate">Archive
+                                                                            <div class="min-w-0 text-truncate">Back to Campaigns
                                                                             </div>
                                                                         </div>
                                                                     </a>
@@ -259,6 +205,64 @@
                                                                     </div>
                                                                 </div>
                                                             @endif
+                                                            <div class="d-md-inline-flex ml-4">
+                                                                <div class="min-w-0">
+                                                                    <div class="align-items-center line-height-20">
+                                                                        <div
+                                                                            @class(
+                                                                                ['select-btn-new form-control', 'open' => $paymentOpen]
+                                                                            )
+                                                                            wire:click="openPayment"
+                                                                            style="width: 230px !important;">
+                                                                            <span class="btn-text">Payment Methods</span>
+                                                                            <span class="arrow-dwn">
+                                                                                <i class="fa-solid fa-chevron-down"></i>
+                                                                            </span>
+                                                                        </div>
+                                                                        <ul class="list-items">
+                                                                            <li>
+                                                                                <label class="item">
+                                                                                    <input class="checkbox"
+                                                                                        wire:model.live="status"
+                                                                                        type="radio" id="statusall"
+                                                                                        value="all">
+                                                                                    <label
+                                                                                        class="item-text cursor-pointer"
+                                                                                        for="statusall">
+                                                                                        All
+                                                                                    </label>
+                                                                                </label>
+                                                                            </li>
+                                                                            <li>
+                                                                                <label class="item">
+                                                                                    <input class="checkbox"
+                                                                                        wire:model.live="status"
+                                                                                        type="radio" id="status1"
+                                                                                        value="1">
+                                                                                    <label
+                                                                                        class="item-text cursor-pointer"
+                                                                                        for="status1">
+                                                                                       Money-based
+                                                                                    </label>
+                                                                                </label>
+                                                                            </li>
+                                                                            <li>
+                                                                                <label class="item">
+                                                                                    <input class="checkbox"
+                                                                                        wire:model.live="status"
+                                                                                        type="radio" id="status0"
+                                                                                        value="0">
+                                                                                    <label
+                                                                                        class="item-text cursor-pointer"
+                                                                                        for="status0">
+                                                                                        Crypto
+                                                                                    </label>
+                                                                                </label>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                             {{-- <div data-v-bba3536e=""
                                                                     class="d-md-inline-flex text-middle font-size-16 mt-1 mx-md-1"
                                                                     style="--max-width-md:210px">
@@ -300,113 +304,7 @@
                                                                     </div>
                                                                 </div> --}}
 
-                                                            <div class="d-md-inline-flex ml-4">
-                                                                <div class="min-w-0">
-                                                                    <div class="align-items-center line-height-20">
-                                                                        <div
-                                                                            @class(
-                                                                                ['select-btn-new form-control', 'open' => $statusOpen]
-                                                                            )
-                                                                            wire:click="openStatus"
-                                                                            style="width: 170px !important;">
-                                                                            <span class="btn-text">Status</span>
-                                                                            <span class="arrow-dwn">
-                                                                                <i
-                                                                                    class="fa-solid fa-chevron-down"></i>
-                                                                            </span>
-                                                                        </div>
-                                                                        <ul class="list-items">
-                                                                            <li>
-                                                                                <label class="item">
-                                                                                    <input class="checkbox"
-                                                                                        wire:model.live="status"
-                                                                                        type="radio" id="statusall"
-                                                                                        value="all">
-                                                                                    <label
-                                                                                        class="item-text cursor-pointer"
-                                                                                        for="statusall">
-                                                                                        All
-                                                                                    </label>
-                                                                                </label>
-                                                                            </li>
-                                                                            <li>
-                                                                                <label class="item">
-                                                                                    <input class="checkbox"
-                                                                                        wire:model.live="status"
-                                                                                        type="radio" id="status1"
-                                                                                        value="1">
-                                                                                    <label
-                                                                                        class="item-text cursor-pointer"
-                                                                                        for="status1">
-                                                                                        Active
-                                                                                    </label>
-                                                                                </label>
-                                                                            </li>
-                                                                            <li>
-                                                                                <label class="item">
-                                                                                    <input class="checkbox"
-                                                                                        wire:model.live="status"
-                                                                                        type="radio" id="status0"
-                                                                                        value="0">
-                                                                                    <label
-                                                                                        class="item-text cursor-pointer"
-                                                                                        for="status0">
-                                                                                        Inactive
-                                                                                    </label>
-                                                                                </label>
-                                                                            </li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="d-md-inline-flex ml-4">
-                                                                <div class="min-w-0">
-                                                                    <div class="align-items-center line-height-20">
-                                                                        <div
-                                                                            @class(
-                                                                                ['select-btn-new form-control', 'open' => $paymentOpen]
-                                                                            )
-                                                                            wire:click="openPayment"
-                                                                            style="width: 230px !important;">
-                                                                            <span class="btn-text">Payment Methods</span>
-                                                                            <span class="arrow-dwn">
-                                                                                <i class="fa-solid fa-chevron-down"></i>
-                                                                            </span>
-                                                                        </div>
-                                                                        <ul class="list-items">
-                                                                            <li>
-                                                                                <label class="item">
-                                                                                    <input class="checkbox"
-                                                                                        wire:model.live="payment_method"
-                                                                                        type="radio" id="status1"
-                                                                                        value="moneybased">
-                                                                                    <label
-                                                                                        class="item-text cursor-pointer"
-                                                                                        for="status1">
-                                                                                       Money-based
-                                                                                    </label>
-                                                                                </label>
-                                                                            </li>
-                                                                            <li>
-                                                                                <label class="item">
-                                                                                    <input class="checkbox"
-                                                                                        wire:model.live="payment_method"
-                                                                                        type="radio" id="status0"
-                                                                                        value="crypto">
-                                                                                    <label
-                                                                                        class="item-text cursor-pointer"
-                                                                                        for="status0">
-                                                                                        Crypto
-                                                                                    </label>
-                                                                                </label>
-                                                                            </li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-
+                                                            
                                                         </div>
                                                     </div>
                                                 </div>
@@ -474,15 +372,6 @@
                                                             <div data-v-42ed51cc="" class="d-flex align-items-center">
                                                                 <div data-v-42ed51cc=""
                                                                     class="font-size-12 line-height-16 font-weight-600 text-uppercase">
-                                                                    ID
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div data-v-42ed51cc=""
-                                                            class="d-th bg-gray-10-hover-gray-10 text-gray-100 w-30">
-                                                            <div data-v-42ed51cc="" class="d-flex align-items-center">
-                                                                <div data-v-42ed51cc=""
-                                                                    class="font-size-12 line-height-16 font-weight-600 text-uppercase">
                                                                     Title
                                                                 </div>
                                                             </div>
@@ -540,14 +429,9 @@
                                                     </div>
                                                 </div>
                                                 @forelse ($campaigns as $camp)
-                                                    <div wire:click=""
+                                                    <div wire:click="goToEdit({{ $camp->id }})"
                                                         style=" cursor: pointer; "
                                                         data-v-42ed51cc="" class="d-tbody">
-                                                        <div class="d-td">
-                                                            <div title="" class="text-truncate max-w-px-200">
-                                                                {{ $camp->code }}
-                                                            </div>
-                                                        </div>
                                                         <div class="d-td">
                                                             <div title="" class="text-truncate max-w-px-200">
                                                                 {{ $camp->title }}
@@ -590,14 +474,6 @@
                                                                     Edit
                                                                 </a>
                                                             </div>
-                                                            <div title="" class="text-truncate max-w-px-200">
-                                                                <a href="" wire:click="cloneCampaign({{ $camp->id }})">
-                                                                    Clone
-                                                                </a>
-                                                            </div>
-                                                            <div title="" class="text-truncate max-w-px-200">
-                                                                <a href="javascript:void(0)" wire:click="openRenameModal({{ $camp->id }})">Rename</a>
-                                                            </div>
                                                         </div>
                                                     </div>
                                                 @empty
@@ -625,9 +501,6 @@
         </div>
         <div style="display: {{ $activeModal ? 'block' : 'none' }};">
             @include('livewire.campaign.campaigns-modal')
-        </div>
-        <div style="display: {{ $activeRenameModal ? 'block' : 'none' }};">
-            @include('livewire.campaign.campaigns-rename-modal')
         </div>
     </div>
 </div>

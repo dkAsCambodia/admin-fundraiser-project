@@ -9,6 +9,7 @@ use Livewire\Attributes\Title;
 use Livewire\Component;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\WithPagination;
+use Illuminate\Support\Str;
 
 class Campaigns extends Component
 {
@@ -17,12 +18,19 @@ class Campaigns extends Component
 
     public $accountOpen = false;
     public $statusOpen = false;
+    public $paymentOpen = false;
     public $accountData;
     public $activeModal = false;
+    public $activeRenameModal = false;
 
     public $title;
     public $search;
+    public $payment_method;
     public $status = 'all';
+    public $id;
+    public $editId;
+    public $causeDetails;
+
 
     public $accounts = [];
 
@@ -48,6 +56,16 @@ class Campaigns extends Component
         }
     }
 
+    public function openPayment()
+    {
+        $this->accountOpen = false;
+        if ($this->paymentOpen === true) {
+            $this->paymentOpen = false;
+        } else {
+            $this->paymentOpen = true;
+        }
+    }
+
     public function openModal()
     {
         $this->activeModal = true;
@@ -58,9 +76,37 @@ class Campaigns extends Component
         $this->activeModal = false;
     }
 
+    public function openRenameModal($id)
+    {
+        $this->editId = $id;
+        $causeDetails = CauseDetail::find($id);
+        $this->activeRenameModal = true;
+        return view('livewire.campaign.campaigns-rename-modal', [
+            'editId' => $this->editId, 'title' => $causeDetails->title,
+        ]);
+    }
+
+    public function closeRenameModal()
+    {
+        $this->activeRenameModal = false;
+    }
+
     public function goToEdit($id)
     {
+        dd("Edit");
         $this->redirect('/campaigns/' . $id . '/create');
+    }
+
+    public function cloneCampaign($id)
+    {
+        $causeDetails = CauseDetail::find($id);
+        $clone = $causeDetails->replicate(); 
+        $clone->title = $clone->title." COPY";
+        $clone->save();
+        $clone_id = $clone->id;
+        
+        $this->flash('success', 'Campaign Cloned Successfully');
+        $this->redirect('/campaigns/' . $clone_id . '/create');
     }
 
     public function mount()
@@ -80,13 +126,34 @@ class Campaigns extends Component
     public function saveCamaign()
     {
         $data = $this->validate([
-            'title' => 'required',
+             //'title' => 'required',
+            'title' => 'required|unique:cause_details,title,',
         ]);
         $data['account_id'] = auth()->user()->id;
+        $data['code'] = Str::upper(Str::random(10));
 
         $causeDetails = CauseDetail::create($data);
 
         $this->flash('success', 'Camaign Created Successfully', [], '/campaigns/' . $causeDetails->id . '/create');
+    }
+
+    public function save(){
+       // dd($this->title,$this->editId);
+        $this->validate([
+            'title' => 'required|unique:cause_details,title,',
+        ]);
+
+        CauseDetail::where('id',$this->editId)->update([
+            'title' => $this->title
+        ]);
+
+        $this->alert('success', 'Updated Successfully');
+
+        //$this->causeDetailData->update([
+           // 'title' => $this->title,
+        //]);
+
+        $this->alert('success', 'Updated Successfully');
     }
 
     #[Title('Campaigns')]
@@ -94,7 +161,8 @@ class Campaigns extends Component
     {
         $userAccounts = CauseDetail::
             where(function ($query) {
-                $query->where('title', 'LIKE', '%' . $this->search . '%');
+                $query->where('title', 'LIKE', '%' . $this->search . '%')
+                      ->orWhere('code', 'LIKE', '%' . $this->search . '%');
                 // ->orWhere('account_name', 'LIKE', '%' . $this->search . '%')
             });
         if (Roles::ACCOUNT->value == auth()->user()->roles) {
@@ -104,6 +172,9 @@ class Campaigns extends Component
         }
         if ($this->status != 'all') {
             $userAccounts = $userAccounts->where('status', $this->status);
+        }
+        if ($this->payment_method != '') {
+            $userAccounts = $userAccounts->where('payment_method', $this->payment_method);
         }
 
         $campaigns = $userAccounts->paginate(10);

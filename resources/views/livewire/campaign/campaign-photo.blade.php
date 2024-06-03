@@ -80,7 +80,7 @@
                                                     </div>
                                                 @endif
                                                 @if ($isType == 'video')
-                                                    {{-- <div class="mb-6">
+                                                    <div class="mb-6">
                                                         <input
                                                             type="file"
                                                             id="campaignvideo"
@@ -102,41 +102,12 @@
                                                         @endif
                                                         @if ($video)
                                                             <video width="100%" height="100%" class="mt-4" controls>
-                                                                <source src="{{ $video->temporaryUrl() }}" type="video/mp4">
+                                                                {{-- <source src="{{ $video->temporaryUrl() }}" type="video/mp4"> --}}
+                                                                <source src="{{ asset('storage/'.$causeDetailData->video) }}" type="video/mp4">
                                                             </video>
                                                         @endif
-                                                    </div> --}}
-
-                                                    <div class="mb-6">
-                                                        <input type="text" id="campaignvideo" class="form-control"
-                                                            style="max-width:280px" wire:model.live="video"
-                                                            accept="video/mp4,video/x-m4v,video/*">
-
-                                                        @error('video')
-                                                            <small class="form-text text-muted text-danger">
-                                                                {{ $message }}
-                                                            </small>
-                                                        @enderror
-                                                        @if ($causeDetailData->video != null && !$video)
-                                                            <iframe class="mt-4" width="420" height="315"
-                                                                src="{{ $causeDetailData->video }}">
-                                                            </iframe>
-                                                            {{-- <video width="100%" height="100%" class="mt-4" controls>
-                                                                <source src="{{ asset('storage/'.$causeDetailData->video) }}" type="video/mp4">
-                                                            </video> --}}
-                                                        @endif
-                                                        @if ($video)
-                                                            <iframe class="mt-4" width="420" height="315"
-                                                                src="{{ $video }}">
-                                                            </iframe>
-                                                            {{-- <video width="100%" height="100%" class="mt-4" controls>
-                                                                <source src="{{ $video->temporaryUrl() }}" type="video/mp4">
-                                                            </video> --}}
-                                                        @endif
                                                     </div>
-                                                @endif
-
-                                                
+                                                @endif 
                                             </div>
                                         </div>
                                     </div>

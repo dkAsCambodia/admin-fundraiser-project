@@ -46,8 +46,7 @@ class CampaignPhoto extends Component
         // dd($validated);
         $this->causeDetailData->update([
             'photo' => $validated['photo'] ? UploadCertificate::upload('campaignPhoto', $validated['photo'], 'public') : $this->causeDetailData->photo,
-            // 'video' => $validated['video'] ? UploadCertificate::upload('campaignVideo', $validated['video'], 'public') : $this->causeDetailData->video,
-            'video' => $validated['video'],
+            'video' => $validated['video'] ? UploadCertificate::upload('campaignVideo', $validated['video'], 'public') : $this->causeDetailData->video,
             'logo' => $validated['logo'] ? UploadCertificate::upload('campaignPhoto', $validated['logo'], 'public') : $this->causeDetailData->logo,
         ]);
 
