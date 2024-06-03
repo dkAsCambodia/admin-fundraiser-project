@@ -60,6 +60,25 @@
         </span>
       </a>
 
+      <a href="/campaigns/{{ $causeDetailData->id }}/payment-methods" wire:navigate class="menu-item menu-item-link focus-outline focus-outline-minus-2 @if($sideBarType == 'payment-methods') router-link-exact-active menu-item-active @endif" data-qa="recurring-giving-button" data-v-28de74e8="">
+        <span class="icon-slot flex-shrink-0 mr-3 icon-slot-18">
+          <span class="p-abs centered font-size-18 ">
+            <svg stroke-linejoin="round" stroke-linecap="round" stroke-width="1.4" stroke="currentColor" fill="none" viewBox="0 0 24 24" height="24" width="24" xmlns="http://www.w3.org/2000/svg" class="icon-stroke d-block">
+              <polyline xmlns="http://www.w3.org/2000/svg" points="23 4 23 10 17 10">
+              </polyline>
+              <path xmlns="http://www.w3.org/2000/svg" d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10">
+              </path>
+            </svg>
+          </span>
+        </span>
+        <span class="flex-grow-1 min-w-0 text-ellipsis"> Payment Methods
+          <!---->
+        </span>
+        <span class="icon-slot flex-shrink-0 ml-2 mr-minus-2 icon-slot-18">
+          <!---->
+        </span>
+      </a>
+
     <a href="/campaigns/{{ $causeDetailData->id }}/campaign-photo" wire:navigate
         class="menu-item menu-item-link focus-outline focus-outline-minus-2 @if($sideBarType == 'campaign-photo') router-link-exact-active menu-item-active @endif"
         data-v-28de74e8="">

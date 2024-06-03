@@ -162,7 +162,7 @@
                                                     </a>
                                                 </div>
                                                 <div data-v-71ccdb84="" class="mt-0-5 d-lg-flex">
-                                                    <button data-v-71ccdb84="" type="button"
+                                                    <button data-v-71ccdb84="" type="button" wire:click="copy()"
                                                         data-qa="overview-copy-link"
                                                         class="btn-link d-block text-gray-85-hover-gray-100 focus-outline"
                                                         data-click-id="$19" data-keyup-id="$20">
