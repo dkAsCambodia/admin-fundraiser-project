@@ -200,7 +200,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <a data-v-e9a1bd20="" href="/AHRLVFYF/campaigns/FUNJVCDZUED/edit/general"
+                            <a data-v-e9a1bd20="" href="/campaigns/1/setting/"
                                 class="d-block mb-6 border-radius-base border border-gray-50 py-4 c-title-link bg-transparent-hover-gray-20 text-gray-100 focus-outline"
                                 data-qa="overview-block-title">
                                 <div data-v-e9a1bd20="" class="d-flex align-items-start px-5">

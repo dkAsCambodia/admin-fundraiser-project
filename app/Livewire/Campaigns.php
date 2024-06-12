@@ -131,7 +131,11 @@ class Campaigns extends Component
         ]);
         $data['account_id'] = auth()->user()->id;
         $data['code'] = Str::upper(Str::random(10));
-
+        $data['status'] = 1;
+        $data['goal'] = 1000;
+        $data['suggested_amounts'] = ["one"=> "1000", "six"=> "500", "two"=> "450", "five"=> "300", "four"=> "350", "three"=> "400"];
+        $data['default_amount'] = 350;
+       
         $causeDetails = CauseDetail::create($data);
 
         $this->flash('success', 'Camaign Created Successfully', [], '/campaigns/' . $causeDetails->id . '/create');

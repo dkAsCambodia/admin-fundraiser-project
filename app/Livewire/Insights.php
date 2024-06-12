@@ -114,11 +114,11 @@ class Insights extends Component
             ->perMonth()
             ->sum('amount');
 
-
+//dd($dataCount, $dataSum);
         $this->lineChartDonationLabels = $dataCount->map(fn(TrendValue $value) => date('M', strtotime($value->date)));
         $this->lineChartDonationDatasetSum = $dataSum->map(fn(TrendValue $value) => $value->aggregate);
         $this->lineChartDonationDatasetCount = $dataCount->map(fn(TrendValue $value) => $value->aggregate);
-
+//dd($this->lineChartDonationLabels,$this->lineChartDonationDatasetSum,$this->lineChartDonationDatasetCount);
         // 'labels' => $pendingData->map(fn (TrendValue $value) => date('F',strtotime($value->date))),
     }
     public function getDataPerDay()

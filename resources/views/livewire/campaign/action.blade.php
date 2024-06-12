@@ -28,12 +28,21 @@
                                 <p class="font-size-14 line-height-20"> Enabling a campaign makes it accessible to donors once again. All your checkout and email settings will be restored and all associated recurring donations will continue to run as before. </p>
                                 <div></div>
                             </div>
+                            @if($causeDetailData->goal == NULL)
+                            <button
+                                type="button"
+                                class="btn flex-shrink-0 btn-default"
+                                wire:click=""
+                                wire:confirm="Please set goal amount to enable campaign"
+                            > Enable </button>
+                            @else
                             <button
                                 type="button"
                                 class="btn flex-shrink-0 btn-default"
                                 wire:click="enable"
                                 wire:confirm="Are you sure you want to Enable this campaign?"
                             > Enable </button>
+                            @endif
                         </div>
                     @endif
                     <hr class="my-0 border-yellow-20">
