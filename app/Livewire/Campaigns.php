@@ -133,8 +133,12 @@ class Campaigns extends Component
         $data['code'] = Str::upper(Str::random(10));
         $data['status'] = 1;
         $data['goal'] = 1000;
-        $data['suggested_amounts'] = ["one"=> "1000", "six"=> "500", "two"=> "450", "five"=> "300", "four"=> "350", "three"=> "400"];
-        $data['default_amount'] = 350;
+        $data['suggested_amounts'] = ["one"=> "1000", "two"=> "800", "three"=> "600", "four"=> "500", "five"=> "200", "six"=> "100"];
+        $data['default_amount'] = 100;
+        $data['default_frequency'] = 'once'; 
+        $data['second_frequency'] = 'monthly';
+        $data['photo'] = 'campaignPhoto/default_image.jpg';
+        $data['logo'] = 'campaignPhoto/default_logo.jpeg';
        
         $causeDetails = CauseDetail::create($data);
 
@@ -181,7 +185,7 @@ class Campaigns extends Component
             $userAccounts = $userAccounts->where('payment_method', $this->payment_method);
         }
 
-        $campaigns = $userAccounts->paginate(10);
+        $campaigns = $userAccounts->orderby('id', 'desc')->paginate(10);
 
         return view('livewire.campaigns', [
             'campaigns' => $campaigns,

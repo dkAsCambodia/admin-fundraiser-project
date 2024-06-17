@@ -83,7 +83,7 @@
                                                     <div class="mb-6">
                                                         <input
                                                             type="file"
-                                                            id="campaignvideo"
+                                                            id="campaignName"
                                                             class="form-control"
                                                             style="max-width:280px"
                                                             wire:model="video"

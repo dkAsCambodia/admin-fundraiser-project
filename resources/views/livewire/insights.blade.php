@@ -140,13 +140,13 @@
                                         <span>Raised <b class="font-weight-600">${{ $totalGoal }}</b>
                                         </span>
                                         <div class="d-none d-lg-block"></div>
-                                        <span>including <b class="font-weight-600">${{ $totalTransaction }}</b>
+                                        <span>including <b class="font-weight-600">${{ $RecurringAmount }}</b>
                                         </span>
                                         <div class="d-none d-lg-block"></div>
                                         <span>in recurring donations</span>
                                         <div class="d-none d-lg-block"></div>
                                         <span>across <span class="text-nowrap">
-                                                <b class="font-weight-600">{{ $totalDonate }} </b>donations. </span>
+                                                <b class="font-weight-600">{{ $RecurringCount }} </b>donations. </span>
                                         </span>
                                     </div>
                                 </div>
@@ -206,7 +206,7 @@
                                             <div class="flex-grow-1 flex-basis-0 min-w-0 mr-4">
                                                 Amount</div>
                                             <div class="d-flex justify-content-end">
-                                                <div>$8,808.22</div>
+                                                <div>${{ $RecurringAmount }}</div>
                                                 <div class="ml-4">
                                                     <div class="icon-slot icon-slot-18 text-gray-85-hover-gray-100"
                                                         data-original-title="Total sum of new recurring donations (only first successful installments)  received during selected timeframe."
@@ -237,7 +237,7 @@
                                             <div class="flex-grow-1 flex-basis-0 min-w-0 mr-4">
                                                 Count</div>
                                             <div class="d-flex justify-content-end">
-                                                <div>505</div>
+                                                <div>{{ $RecurringCount }}</div>
                                                 <div class="ml-4">
                                                     <div class="icon-slot icon-slot-18 text-gray-85-hover-gray-100"
                                                         data-original-title="Number of new recurring donations (only first successful installments) received during selected timeframe."
@@ -268,7 +268,7 @@
                                             <div class="flex-grow-1 flex-basis-0 min-w-0 mr-4">
                                                 Average</div>
                                             <div class="d-flex justify-content-end">
-                                                <div>$17.44</div>
+                                                <div>${{ $RecurringAvg }}</div>
                                                 <div class="ml-4">
                                                     <div class="icon-slot icon-slot-18 text-gray-85-hover-gray-100"
                                                         data-original-title="Average amount of new recurring donations (only first successful installments) received during selected timeframe."
@@ -299,7 +299,7 @@
                                             <div class="flex-grow-1 flex-basis-0 min-w-0 mr-4">
                                                 Median</div>
                                             <div class="d-flex justify-content-end">
-                                                <div>$11.00</div>
+                                                <div>${{ $RecurringMedian }}</div>
                                                 <div class="ml-4">
                                                     <div class="icon-slot icon-slot-18 text-gray-85-hover-gray-100"
                                                         data-original-title="Median amount of new recurring donations (only first successful installments) received during selected timeframe."
@@ -345,7 +345,7 @@
                                             <div class="flex-grow-1 flex-basis-0 min-w-0 mr-4">
                                                 Amount</div>
                                             <div class="d-flex justify-content-end">
-                                                <div>$183,011.24</div>
+                                                <div>${{ $OnetimeAmount }}</div>
                                                 <div class="ml-4">
                                                     <div class="icon-slot icon-slot-18 text-gray-85-hover-gray-100"
                                                         data-original-title="Total sum of all one time successful donations received during selected timeframe. This amount does not include revenue received from recurring donations."
@@ -376,7 +376,7 @@
                                             <div class="flex-grow-1 flex-basis-0 min-w-0 mr-4">
                                                 Count</div>
                                             <div class="d-flex justify-content-end">
-                                                <div>4,381</div>
+                                                <div>{{ $OnetimeCount }}</div>
                                                 <div class="ml-4">
                                                     <div class="icon-slot icon-slot-18 text-gray-85-hover-gray-100"
                                                         data-original-title="Number of all one time successful donations received during selected timeframe. This amount does not include revenue received from recurring donations."
@@ -407,7 +407,7 @@
                                             <div class="flex-grow-1 flex-basis-0 min-w-0 mr-4">
                                                 Average</div>
                                             <div class="d-flex justify-content-end">
-                                                <div>$41.78</div>
+                                                <div>${{ $OnetimeAvg }}</div>
                                                 <div class="ml-4">
                                                     <div class="icon-slot icon-slot-18 text-gray-85-hover-gray-100"
                                                         data-original-title="Average amount of all one time successful donations received during selected timeframe. This amount does not include revenue received from recurring donations."
@@ -438,7 +438,7 @@
                                             <div class="flex-grow-1 flex-basis-0 min-w-0 mr-4">
                                                 Median</div>
                                             <div class="d-flex justify-content-end">
-                                                <div>$24.15</div>
+                                                <div>${{ $OnetimeMedian }}</div>
                                                 <div class="ml-4">
                                                     <div class="icon-slot icon-slot-18 text-gray-85-hover-gray-100"
                                                         data-original-title="Median amount of all one time successful donations received during selected timeframe. This amount does not include revenue received from recurring donations."

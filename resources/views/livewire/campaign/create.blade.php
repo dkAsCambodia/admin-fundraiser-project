@@ -3,6 +3,9 @@
         <div class="h-100">
             <div class="container mt-6 mt-xl-10 d-flex flex-column h-100">
                 @include('livewire.campaign.navbar')
+                @php
+                    $raisedValue = raisedValue($causeDetailData->id);
+                @endphp
                 <div class="panel mb-0 p-6 p-xl-8">
                     <div class="d-flex mb-6 p-2 border border-gray-50 border-radius-base overflow-auto">
                         <a href="/AHRLVFYF/insights?dates=all&amp;widgets=FUNJVCDZUED" target="_blank" rel="noopener"
@@ -10,14 +13,14 @@
                             class="d-block px-3 py-2 bg-transparent-hover-gray-20 border-radius-base focus-outline min-w-0 flex-shrink-0">
                             <p class="text-gray-85 font-size-14 line-height-20 text-nowrap" style="margin-bottom:2px">
                                 Total raised</p>
-                            <p data-qa="summary-total-raised-value" class="text-gray-100 text-nowrap d-flex">$0</p>
+                            <p data-qa="summary-total-raised-value" class="text-gray-100 text-nowrap d-flex">${{$raisedValue}}</p>
                         </a>
                         <a href="/AHRLVFYF/donations?source=website&amp;widget=FUNJVCDZUED" target="_blank"
                             rel="noopener" data-qa="summary-checkout-link"
                             class="d-block ml-3 px-3 py-2 bg-transparent-hover-gray-20 border-radius-base focus-outline">
                             <p class="text-gray-85 font-size-14 line-height-20 text-nowrap" style="margin-bottom:2px">
                                 Checkout modal</p>
-                            <p data-qa="summary-checkout-value" class="text-gray-100 text-nowrap">$0</p>
+                            <p data-qa="summary-checkout-value" class="text-gray-100 text-nowrap">${{$raisedValue}}</p>
                         </a>
                         <a href="/AHRLVFYF/donations?source=campaignPage&amp;widget=FUNJVCDZUED" target="_blank"
                             rel="noopener" data-qa="summary-campaign-page-link"
@@ -200,7 +203,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <a data-v-e9a1bd20="" href="/campaigns/1/setting/"
+                            <a data-v-e9a1bd20="" href="/campaigns/{{ $causeDetailData->id }}/setting/"
                                 class="d-block mb-6 border-radius-base border border-gray-50 py-4 c-title-link bg-transparent-hover-gray-20 text-gray-100 focus-outline"
                                 data-qa="overview-block-title">
                                 <div data-v-e9a1bd20="" class="d-flex align-items-start px-5">
