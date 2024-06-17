@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Enums\Roles;
 use App\Models\CauseDetail;
 use App\Models\TransactionDetail;
+use App\Models\Transaction;
 use App\Models\User;
 use Flowframe\Trend\Trend;
 use Flowframe\Trend\TrendValue;
@@ -19,7 +20,7 @@ class Insights extends Component
     public $lineChartDonationLabels, $lineChartDonationDatasetSum, $lineChartDonationDatasetCount;
     public $barChartDonationHourLabels, $barChartDonationHourDatasetSum, $barChartDonationHourDatasetCount;
     public $barChartDonationDayLabels, $barChartDonationDayDatasetSum, $barChartDonationDayDatasetCount;
-
+            
     public $accountData, $campaignData;
     public $accounts = [];
     public $campaigns = [];
@@ -234,10 +235,29 @@ class Insights extends Component
         $totalDonate = TransactionDetail::where('status', 'success')
             ->whereBetween(\DB::raw('DATE(created_at)'), [$this->startDate, $this->endDate])->count();
 
+        $RecurringAmount = Transaction::where('frequency', 'monthly')->sum('total_amount');  
+        $RecurringCount = Transaction::where('frequency', 'monthly')->count();
+        $RecurringAvg = Transaction::where('frequency', 'monthly')->avg('total_amount');
+        $RecurringMedian = Transaction::where('frequency', 'monthly')->pluck('total_amount')->median(); 
+       
+        $OnetimeAmount = Transaction::where('frequency', 'once')->sum('total_amount');  
+        $OnetimeCount = Transaction::where('frequency', 'once')->count();      
+        $OnetimeAvg = Transaction::where('frequency', 'once')->sum('total_amount'); 
+        $OnetimeMedian = Transaction::where('frequency', 'once')->pluck('total_amount')->median();           
+
         return view('livewire.insights', [
             'totalDonate' => $totalDonate,
             'totalTransaction' => $totalTransaction,
             'totalGoal' => $totalGoal,
+            'RecurringAmount' => $RecurringAmount,
+            'RecurringCount' => $RecurringCount,
+            'RecurringAvg' => $RecurringAvg,
+            'OnetimeCount' => $OnetimeCount,
+            'OnetimeAmount' => $OnetimeAmount,
+            'OnetimeCount' => $OnetimeCount,
+            'OnetimeAvg' => $OnetimeAvg,
+            'RecurringMedian' => $RecurringMedian,
+            'OnetimeMedian' => $OnetimeMedian
         ]);
     }
 }

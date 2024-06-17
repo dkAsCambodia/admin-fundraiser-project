@@ -19,7 +19,7 @@ class CampaignPhoto extends Component
     public $causeDetailData;
 
     public $camPage = 'setting';
-    public $isType = 'video';
+    public $isType = 'photo';
     public $sideBarType = 'campaign-photo';
 
     public $photo;
