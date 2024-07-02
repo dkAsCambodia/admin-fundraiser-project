@@ -100,11 +100,12 @@
                                                                 <source src="{{ asset('storage/'.$causeDetailData->video) }}" type="video/mp4">
                                                             </video>
                                                         @endif
-                                                        @if ($video)
+                                                        
+                                                        @if($video)
                                                             <video width="100%" height="100%" class="mt-4" controls>
-                                                                {{-- <source src="{{ $video->temporaryUrl() }}" type="video/mp4"> --}}
-                                                                <source src="{{ asset('storage/'.$causeDetailData->video) }}" type="video/mp4">
-                                                            </video>
+                                                               <source src="{{ @$video->temporaryUrl() }}" type="video/mp4"> 
+                                                               {{-- <source src="{{ asset('storage/'.$causeDetailData->video) }}" type="video/mp4"> --}}
+                                                            </video> 
                                                         @endif
                                                     </div>
                                                 @endif 

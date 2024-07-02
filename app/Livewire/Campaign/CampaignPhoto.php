@@ -24,13 +24,13 @@ class CampaignPhoto extends Component
 
     public $photo;
 
-    public $video = '';
+    public $video;
 
     public $logo;
     public function mount(CauseDetail $causeDetail)
     {
         $this->causeDetailData = $causeDetail;
-        $this->video = $causeDetail->video;
+       // $this->video = $causeDetail->video;
     }
 
     public function save(){
