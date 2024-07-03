@@ -12,6 +12,7 @@ use App\Livewire\Campaign\Create;
 use App\Livewire\Campaign\Currency;
 use App\Livewire\Campaign\CustomFields;
 use App\Livewire\Campaign\PaymentMethods;
+use App\Livewire\Campaign\Designations;
 use App\Livewire\Campaign\Setting;
 use App\Livewire\Campaign\Frequencies;
 use App\Livewire\Campaign\SuggestedAmounts;
@@ -56,6 +57,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/campaigns/{causeDetail}/frequencies', Frequencies::class);
     Route::get('/campaigns/{causeDetail}/action', Action::class);
     Route::get('/campaigns/{causeDetail}/payment-methods', PaymentMethods::class);
+    Route::get('/campaigns/{causeDetail}/designations', Designations::class);
     Route::get('/campaigns/{causeDetail}/currency', Currency::class);
     Route::get('/campaigns/{causeDetail}/suggested-amounts', SuggestedAmounts::class);
     Route::get('/campaigns/{causeDetail}/campaign-upsells', CampaignUpsells::class);

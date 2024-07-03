@@ -137,6 +137,8 @@ class Campaigns extends Component
         $data['default_amount'] = 100;
         $data['default_frequency'] = 'once'; 
         $data['second_frequency'] = 'monthly';
+        $data['designations'] = 'yemen';
+        $data['moneybased'] = 'moneybased';
         $data['photo'] = 'campaignPhoto/default_image.jpg';
         $data['logo'] = 'campaignPhoto/default_logo.jpeg';
        
