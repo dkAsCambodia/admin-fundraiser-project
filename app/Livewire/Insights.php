@@ -242,7 +242,7 @@ class Insights extends Component
        
         $OnetimeAmount = Transaction::where('frequency', 'once')->sum('total_amount');  
         $OnetimeCount = Transaction::where('frequency', 'once')->count();      
-        $OnetimeAvg = Transaction::where('frequency', 'once')->sum('total_amount'); 
+        $OnetimeAvg = Transaction::where('frequency', 'once')->avg('total_amount'); 
         $OnetimeMedian = Transaction::where('frequency', 'once')->pluck('total_amount')->median();           
 
         return view('livewire.insights', [
@@ -251,11 +251,11 @@ class Insights extends Component
             'totalGoal' => $totalGoal,
             'RecurringAmount' => $RecurringAmount,
             'RecurringCount' => $RecurringCount,
-            'RecurringAvg' => $RecurringAvg,
+            'RecurringAvg' => floor($RecurringAvg),
             'OnetimeCount' => $OnetimeCount,
             'OnetimeAmount' => $OnetimeAmount,
             'OnetimeCount' => $OnetimeCount,
-            'OnetimeAvg' => $OnetimeAvg,
+            'OnetimeAvg' => floor($OnetimeAvg),
             'RecurringMedian' => $RecurringMedian,
             'OnetimeMedian' => $OnetimeMedian
         ]);
