@@ -259,6 +259,72 @@
     function closeModalEmailPassword(e) {
         document.getElementById("model-" + e).style.display = "none";
     }
+
+    //New changes Start
+    document.addEventListener('DOMContentLoaded', function () {
+    var tabs = document.querySelectorAll('[data-v-ee4eaf20] .tab');
+    var tabContents = document.querySelectorAll('[data-v-ee4eaf20] .c-tab');
+
+    tabs.forEach(function(tab, index) {
+        tab.addEventListener('click', function() {
+            tabs.forEach(function(t) { t.classList.remove('active'); });
+            tabContents.forEach(function(tc) { tc.classList.add('d-none'); });
+            tab.classList.add('active');
+            tabContents[index].classList.remove('d-none');
+        });
+    });
+});
+
+     $(document).ready(function () {
+
+         $('#enableHintsCheckboxOne').change(function () {
+            if (this.checked) {
+                $('#hintDivOne').show();// enableHintsCheckboxMonth hintDivMonth hintDivDefaultMth
+                $('#hintDivDefaultOne').hide();
+            } else {
+                $('#hintDivOne').hide();
+                $('#hintDivDefaultOne').show();
+            }
+            // Trigger change event on #hitDivAi
+                 $('#hitDivAi').trigger('change');
+        });
+
+        $('#enableHintsCheckboxMonth').change(function () {
+            if (this.checked) {
+                $('#hintDivMonth').show();// aiDesOne aiDesMonth hitDivAi
+                $('#hintDivDefaultMth').hide();
+            } else {
+                $('#hintDivMonth').hide();
+                $('#hintDivDefaultMth').show();
+            }
+            // Trigger change event on #hitDivAi
+                 $('#hitDivAi').trigger('change');
+        });
+
+        //Ai check box based hide/show process
+        $('#hitDivAi').change(function () {
+            if (this.checked) {
+                var activeTabDataQa = getActiveTab();
+                if(activeTabDataQa=='suggested-amounts-first-tab'){ //First tab enable 
+                        $('#aiDesOne').show();
+                        $('#aiDesMonth').hide();
+                }
+                else{ //Second tab enable 
+                     $('#aiDesOne').hide();
+                $('#aiDesMonth').show(); 
+                }
+            } else {
+                $('#aiDesOne').hide();
+                $('#aiDesMonth').hide();
+            }
+        });
+    });
+    // Function to get the currently active tab
+        function getActiveTab() {
+            var activeTab = document.querySelector('[data-v-ee4eaf20] .tab.active');
+            return activeTab ? activeTab.getAttribute('data-qa') : null; // Assuming data-qa holds the tab identifier
+        }
+    //New changes End
 </script>
 
 @stack('scripts')
