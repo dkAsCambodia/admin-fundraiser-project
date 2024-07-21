@@ -25,6 +25,7 @@ class Donations extends Component
     public $title;
     public $transactionId;
     public $status = 'all';
+    public $id;
 
     public $accountView = true;
 
@@ -46,6 +47,13 @@ class Donations extends Component
         } else {
             $this->campaignOpen = true;
         }
+    }
+
+    public function goToView($id)
+    {
+        $transaction = Transaction::where(['id' => $id])->first();
+        $main_trans_id = base64_encode($transaction->main_transaction_id);
+        $this->redirect('/donation/' . $main_trans_id);
     }
 
     public function mount()

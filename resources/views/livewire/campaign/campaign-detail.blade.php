@@ -23,7 +23,7 @@
                                 </div>
                                 <div class="max-w-px-550">
                                     <div class="mb-6">
-                                        <label for="short_details" class="mb-2">Campaign Short Details<span class="text-danger">*</span></label>
+                                        <label for="short_details" class="mb-2">Title<span class="text-danger">*</span></label>
                                         <textarea cols="30" rows="5"
                                             id="short_details"
                                             class="form-control"

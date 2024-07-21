@@ -541,7 +541,6 @@
                                                 </div>
                                                 @forelse ($campaigns as $camp)
                                                     <div wire:click=""
-                                                        style=" cursor: pointer; "
                                                         data-v-42ed51cc="" class="d-tbody">
                                                         <div class="d-td">
                                                             <div title="" class="text-truncate max-w-px-200">
