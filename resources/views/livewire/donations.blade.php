@@ -311,7 +311,7 @@
                                                     </div>
                                                 </div>
                                                 @forelse ($donationData as $donation)
-                                                    <div data-v-42ed51cc="" class="d-tbody">
+                                                    <div wire:click="goToView({{$donation->id}})" style=" cursor: pointer;" data-v-42ed51cc="" class="d-tbody">
                                                         <div class="d-td">
                                                             <div title="" class="text-truncate max-w-px-200">
                                                                 {{ $donation->created_at->format('M d, Y, h:i A') }}

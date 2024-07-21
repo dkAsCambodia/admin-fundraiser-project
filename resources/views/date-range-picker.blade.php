@@ -23,14 +23,24 @@
 
         var start = moment().subtract(1, 'M');
         var end = moment();
+        var label = moment();
 
         // var start = moment();
         // var end = moment();
 
-        function cb(start, end) {
+        function cb(start, end, label) {
+            console.log(label);
             @this.set('startDate', start.format('YYYY-MM-DD'));
             @this.set('endDate', end.format('YYYY-MM-DD'));
-            @this.set('dateSpanData', start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
+            if(label == 'Today' || label == 'Yesterday')
+            {
+                @this.set('dateSpanData', start.format('MMMM D, YYYY'))
+            }
+            else
+            {
+                @this.set('dateSpanData', start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
+            }
+            
         }
 
         $('#reportrange').daterangepicker({
@@ -47,6 +57,6 @@
             }
         }, cb);
 
-        cb(start, end);
+        cb(start, end, label);
     });
 </script>

@@ -23,7 +23,7 @@
                                 <div class="max-w-px-550">
                                     <div class="mb-6">
                                         <label for="short_details" class="mb-2">select Campaign<span class="text-danger">*</span></label>
-                                        <select class="js-example-placeholder-multiple js-states form-control" multiple="multiple" wire:model="campaign_upsellId">
+                                        <select style=" height:200px;" class="js-example-placeholder-multiple js-states form-control" multiple="multiple" wire:model="campaign_upsellId">
                                             @foreach($usersWithProducts as $userData)
                                                 <optgroup label="{{ $userData['user_name'] }}">
                                                     @foreach($userData['products'] as $product)                                  
