@@ -25,10 +25,15 @@
                                     <p data-qa="payment-method-title" class="mb-8">
                                     Supporters are likely to donate more if they can direct their gift toward something important to them. You can add multiple designations and pick your default designation.
                                     </p>
-                                        
-                                        <div class="max-w-px-550">
-                                        <label for="v-1706330978554-Designations" class="mb-2">Designations<span class="text-danger">*</span></label>
-                                        <select
+
+                                    <label data-v-ee4eaf20="" for="v-1706330978554-billingRate" class="mb-2">Add Designations</label>
+                                    <input placeholder="Designations" type="text"  value=""
+                                           class="c-donation-control form-control control-price"
+                                           id="billingRate" style="max-width:280px" wire:model.lazy="billingRate"></br>
+                                                    
+                                    <div class="max-w-px-550">
+                                        <label for="Designations" class="mb-2">Designations</label>
+                                        <!-- <select
                                             id="v-1706330978554-Designations"
                                             data-qa="designations-dropdown"
                                             class="form-control custom-select mb-6"
@@ -42,13 +47,23 @@
                                             <option class="text-capitalize" value="egypt"> Egypt </option>
                                             <option class="text-capitalize" value="iran"> Iran </option>
                                             <option class="text-capitalize" value="somalia"> Somalia </option>
+                                                                            </select> -->
+                                            @php
+                                            // Ensure $stringValue is a string before using explode()
+                                            if (is_string($stringValue)) {
+                                                $explodedValues = explode(",", $stringValue);
+                                            } else {
+                                                $explodedValues = [];
+                                            }
+                                            @endphp
+                                            {{$causeDetailData->selected_designation}}
+                                        <select style="max-width: 280px;" class="form-control custom-select mb-6"
+                                        wire:model.lazy="selected_designation">
+                                                @foreach($explodedValues as $value)
+                                                <option value="{{ $value  }}" {{$value == $causeDetailData->selected_designation ? 'selected' : '' }}>{{ $value }}</option>
+                                                @endforeach
                                         </select>
-                                        @error('designations')
-                                            <small class="form-text text-muted text-danger">
-                                                {{ $message }}
-                                            </small>
-                                        @enderror
-                                        </div>
+                                    </div>
                                     </div>
                                     </div>
                                 </div>

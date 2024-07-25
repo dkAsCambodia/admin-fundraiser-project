@@ -7,6 +7,8 @@ use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\Rule;
 use Livewire\Attributes\Title;
 use Livewire\Component;
+use DB;
+use Illuminate\Database\Query\Expression;
 
 class Designations extends Component
 {
@@ -16,6 +18,9 @@ class Designations extends Component
 
     public $causeDetailData;
     public $designations;
+    public $billingRate;
+    public $stringValue;
+    public $selected_designation;
 
     public function mount(CauseDetail $causeDetail)
     {
@@ -24,15 +29,29 @@ class Designations extends Component
         if(!empty($causeDetail->designations)){
             $this->designations = $causeDetail->designations;
         }
+        $updatedValue = $this->causeDetailData->fresh()->designations;
+        $this->stringValue = $updatedValue ? (string) $updatedValue : '';
     }
 
     public function save(){
+        //dd($this->selected_designation);
         $this->validate([
-            'designations' => 'required',
+            'billingRate' => 'required',
         ]);
-        $this->causeDetailData->update([
-            'designations' => $this->designations,
-        ]);
+
+        $this->causeDetailData->update(['selected_designation' => $this->selected_designation,]);
+
+        if($this->causeDetailData->designations == null)
+        {
+             $this->causeDetailData->update(['designations' => $this->billingRate,]);
+        }
+        else
+        {
+            $this->causeDetailData
+            ->update(['designations'=>DB::raw("CONCAT(designations,',".$this->billingRate."')")]);
+            $updatedValue = $this->causeDetailData->fresh()->designations;
+            $this->stringValue = $updatedValue ? (string) $updatedValue : '';
+        }
 
         $this->alert('success', 'Updated Successfully');
     }
