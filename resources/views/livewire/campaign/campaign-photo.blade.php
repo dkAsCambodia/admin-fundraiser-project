@@ -38,11 +38,11 @@
                                                             @enderror
                                                             @if ($causeDetailData->logo != null && !$logo)
                                                                 <img src="{{ asset('storage/' . $causeDetailData->logo) }}"
-                                                                    width="35%" height="35%" class="mt-4">
+                                                                    width="50%" height="50%" class="mt-4">
                                                             @endif
                                                             @if ($logo)
-                                                                <img src="{{ $logo->temporaryUrl() }}" width="35%"
-                                                                    height="35%" class="mt-4">
+                                                                <img src="{{ $logo->temporaryUrl() }}" width="50%"
+                                                                    height="50%" class="mt-4">
                                                             @endif
                                                         </div>
                                                     {{-- @endif --}}
@@ -71,11 +71,11 @@
                                                         @enderror
                                                         @if ($causeDetailData->photo != null && !$photo)
                                                             <img src="{{ asset('storage/' . $causeDetailData->photo) }}"
-                                                                width="35%" height="35%" class="mt-4">
+                                                                width="50%" height="50%" class="mt-4">
                                                         @endif
                                                         @if ($photo)
-                                                            <img src="{{ $photo->temporaryUrl() }}" width="35%"
-                                                                height="35%" class="mt-4">
+                                                            <img src="{{ $photo->temporaryUrl() }}" width="50%"
+                                                                height="50%" class="mt-4">
                                                         @endif
                                                     </div>
                                                 @endif
@@ -96,19 +96,30 @@
                                                             </small>
                                                         @enderror
                                                         @if ($causeDetailData->video != null && !$video)
-                                                            <video width="35%" height="35%" class="mt-4" controls>
+                                                            <video width="50%" height="50%" class="mt-4" controls>
                                                                 <source src="{{ asset('storage/'.$causeDetailData->video) }}" type="video/mp4">
                                                             </video>
                                                         @endif
                                                         
                                                         @if($video)
-                                                            <video width="35%" height="35%" class="mt-4" controls>
+                                                            <video width="50%" height="50%" class="mt-4" controls>
                                                                <source src="{{ @$video->temporaryUrl() }}" type="video/mp4"> 
                                                                {{-- <source src="{{ asset('storage/'.$causeDetailData->video) }}" type="video/mp4"> --}}
                                                             </video> 
                                                         @endif
                                                     </div>
-                                                @endif 
+                                                @endif             
+                                                    <label for="short_details" class="mb-2">Embed Video</label>
+                                                        <div class="mb-6">
+                                                            <input type="text"  class="form-control"
+                                                                style="max-width:280px" wire:model.live="videoUrl"></br>
+                                                                @if($videoUrl)
+                                                                <iframe width="50%" height="50%" src="{{$videoUrl.'?autoplay=1&mute=1'}}" frameborder="10"></iframe>
+                                                                @endif
+                                                                @if(!$videoUrl && $causeDetailData->videoUrl != null)
+                                                                <iframe width="50%" height="50%" src="{{$causeDetailData->videoUrl.'?autoplay=1&mute=1'}}" frameborder="10"></iframe>
+                                                                @endif
+                                                        </div>
                                             </div>
                                         </div>
                                     </div>

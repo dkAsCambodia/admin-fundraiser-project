@@ -25,7 +25,7 @@ class CampaignPhoto extends Component
     public $photo;
 
     public $video;
-
+    public $videoUrl;
     public $logo;
     public function mount(CauseDetail $causeDetail)
     {
@@ -42,12 +42,14 @@ class CampaignPhoto extends Component
             'photo' => '',
             'video' => '',
             'logo' => '',
+            'videoUrl' => '',
         ]);
         // dd($validated);
         $this->causeDetailData->update([
             'photo' => $validated['photo'] ? UploadCertificate::upload('campaignPhoto', $validated['photo'], 'public') : $this->causeDetailData->photo,
             'video' => $validated['video'] ? UploadCertificate::upload('campaignVideo', $validated['video'], 'public') : $this->causeDetailData->video,
             'logo' => $validated['logo'] ? UploadCertificate::upload('campaignPhoto', $validated['logo'], 'public') : $this->causeDetailData->logo,
+            'videoUrl' => $this->videoUrl,
         ]);
 
         $this->alert('success', 'Campaign Gallery Updated Successfully');
