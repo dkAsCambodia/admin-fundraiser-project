@@ -68,13 +68,13 @@
      <div data-v-9ef0dda4="" class="p-rel d-flex items-end items-sm-center flex-wrap flex-sm-nowrap mb-6 mb-sm-4">
         <div data-v-9ef0dda4="" class="shrink-0 c-amount-control">
             <label data-v-9ef0dda4="" for="v-1720413778825-amount" class="d-sm-none mb-2">Amount</label>
-            <input data-v-9ef0dda4="" type="text" dir="auto" autocomplete="off" inputmode="numeric" class="form-control control-price" id="v-1720413778825-amount" placeholder="$5" data-qa="secondTab-amount-option-0-input">
+            <input data-v-9ef0dda4="" type="text" dir="auto" autocomplete="off" wire:model ="impactAmount1" inputmode="numeric" class="form-control control-price" id="v-1720413778825-amount" placeholder="$5" data-qa="secondTab-amount-option-0-input">
         </div>
 
         <div data-v-9ef0dda4="" class="c-hint-control min-w-0 mt-3 mt-sm-0 ms-sm-2">
             <label data-v-9ef0dda4="" for="v-1720413778825-description" class="d-sm-none mb-2">Impact description</label>
             <div data-v-9ef0dda4="" index="0" data-qa="secondTab-hint-option-0-input">
-                <input id="v-1720413778825-description" placeholder="Helps fund an awareness campaign" dir="auto" class="form-control text-ibm" style="padding-inline: 12px 0px;">
+                <input id="v-1720413778825-description" wire:model ="impactDesc1" placeholder="Helps fund an awareness campaign" dir="auto" class="form-control text-ibm" style="padding-inline: 12px 0px;">
             </div>
         </div>
     </div>
@@ -82,13 +82,13 @@
     <div data-v-9ef0dda4="" class="p-rel d-flex items-end items-sm-center flex-wrap flex-sm-nowrap mb-6 mb-sm-4">
         <div data-v-9ef0dda4="" class="shrink-0 c-amount-control">
             <label data-v-9ef0dda4="" for="v-1720413778827-amount" class="d-sm-none mb-2">Amount</label>
-            <input data-v-9ef0dda4="" type="text" dir="auto" autocomplete="off" inputmode="numeric" class="form-control control-price" id="v-1720413778827-amount" placeholder="$10" data-qa="secondTab-amount-option-1-input">
+            <input data-v-9ef0dda4="" type="text" dir="auto" autocomplete="off" wire:model ="impactAmount2" inputmode="numeric" class="form-control control-price" id="v-1720413778827-amount" placeholder="$10" data-qa="secondTab-amount-option-1-input">
         </div>
 
         <div data-v-9ef0dda4="" class="c-hint-control min-w-0 mt-3 mt-sm-0 ms-sm-2">
             <label data-v-9ef0dda4="" for="v-1720413778827-description" class="d-sm-none mb-2">Impact description</label>
             <div data-v-9ef0dda4="" index="1" data-qa="secondTab-hint-option-1-input">
-                <input id="v-1720413778827-description" placeholder="Supports our core operations" dir="auto" class="form-control text-ibm" style="padding-inline: 12px 0px;">
+                <input id="v-1720413778827-description" wire:model ="impactDesc2" placeholder="Supports our core operations" dir="auto" class="form-control text-ibm" style="padding-inline: 12px 0px;">
             </div>
         </div>
     </div>
@@ -96,18 +96,19 @@
     <div data-v-9ef0dda4="" class="p-rel d-flex items-end items-sm-center flex-wrap flex-sm-nowrap mb-6 mb-sm-4">
         <div data-v-9ef0dda4="" class="shrink-0 c-amount-control">
             <label data-v-9ef0dda4="" for="v-1720413778829-amount" class="d-sm-none mb-2">Amount</label> 
-            <input data-v-9ef0dda4="" type="text" dir="auto" autocomplete="off" inputmode="numeric" class="form-control control-price" id="v-1720413778829-amount" placeholder="$30" data-qa="secondTab-amount-option-2-input">
+            <input data-v-9ef0dda4="" type="text" dir="auto" autocomplete="off" wire:model ="impactAmount3" inputmode="numeric" class="form-control control-price" id="v-1720413778829-amount" placeholder="$30" data-qa="secondTab-amount-option-2-input">
         </div> 
 
         <div data-v-9ef0dda4="" class="c-hint-control min-w-0 mt-3 mt-sm-0 ms-sm-2">
             <label data-v-9ef0dda4="" for="v-1720413778829-description" class="d-sm-none mb-2">Impact description</label> 
             <div data-v-9ef0dda4="" index="2" data-qa="secondTab-hint-option-2-input">
-                <input id="v-1720413778829-description" placeholder="Enables us to expand our services" dir="auto" class="form-control text-ibm" style="padding-inline: 12px 0px;"> 
+                <input id="v-1720413778829-description" wire:model ="impactDesc3" placeholder="Enables us to expand our services" dir="auto" class="form-control text-ibm" style="padding-inline: 12px 0px;"> 
             </div>
         </div> 
     </div>
+    
     <!--AI Div Start -->
-    <div id="aiDesOne" style="display: none;">
+    {{-- <div id="aiDesOne" style="display: none;">
     <div data-v-9ef0dda4="" class="p-rel d-flex items-end items-sm-center flex-wrap flex-sm-nowrap mb-6 mb-sm-4">
         <div data-v-9ef0dda4="" class="shrink-0 c-amount-control">
             <label data-v-9ef0dda4="" for="v-1720413778830-amount" class="d-sm-none mb-2">Amount</label> 
@@ -119,10 +120,10 @@
             <div data-v-9ef0dda4="" index="3" data-qa="secondTab-hint-option-3-input">
                 <input id="v-1720413778830-description" placeholder="Helps fund an awareness campaign" dir="auto" class="form-control text-ibm" style="padding-inline: 12px 0px;"> 
             </div>
-        </div> <!---->
-    </div>
+        </div> 
+    </div> --}}
 
-    <div data-v-9ef0dda4="" class="p-rel d-flex items-end items-sm-center flex-wrap flex-sm-nowrap mb-6 mb-sm-4">
+    {{-- <div data-v-9ef0dda4="" class="p-rel d-flex items-end items-sm-center flex-wrap flex-sm-nowrap mb-6 mb-sm-4">
         <div data-v-9ef0dda4="" class="shrink-0 c-amount-control">
             <label data-v-9ef0dda4="" for="v-1720413778832-amount" class="d-sm-none mb-2">Amount</label> 
             <input data-v-9ef0dda4="" type="text" dir="auto" autocomplete="off" inputmode="numeric" class="form-control control-price" id="v-1720413778832-amount" placeholder="$100" data-qa="secondTab-amount-option-4-input">
@@ -134,9 +135,9 @@
                 <input id="v-1720413778832-description" placeholder="Supports our core operations" dir="auto" class="form-control text-ibm" style="padding-inline: 12px 0px;"> 
             </div>
         </div>
-        </div>
+    </div> --}}
         
-        <div data-v-9ef0dda4="" class="p-rel d-flex items-end items-sm-center flex-wrap flex-sm-nowrap mb-6 mb-sm-4">
+        {{-- <div data-v-9ef0dda4="" class="p-rel d-flex items-end items-sm-center flex-wrap flex-sm-nowrap mb-6 mb-sm-4">
             <div data-v-9ef0dda4="" class="shrink-0 c-amount-control">
                 <label data-v-9ef0dda4="" for="v-1720413778833-amount" class="d-sm-none mb-2">Amount</label> 
                 <input data-v-9ef0dda4="" type="text" dir="auto" autocomplete="off" inputmode="numeric" class="form-control control-price" id="v-1720413778833-amount" placeholder="$200" data-qa="secondTab-amount-option-5-input">
@@ -148,9 +149,9 @@
                     <input id="v-1720413778833-description" placeholder="Enables us to expand our services" dir="auto" class="form-control text-ibm" style="padding-inline: 12px 0px;"> 
                 </div>
             </div> <!---->
-        </div> 
+        </div>  --}}
 
-        <button type="button" data-qa="hints-add-new-button" class="btn btn-default d-flex items-center">
+        {{-- <button type="button" data-qa="hints-add-new-button" class="btn btn-default d-flex items-center">
             <svg svg-inline="" focusable="false" role="presentation" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" class="icon-stroke font-size-18 shrink-0 ms-minus-1 me-2">
                 <circle cx="12" cy="12" r="10"></circle>
                 <line x1="12" y1="8" x2="12" y2="16"></line>
@@ -158,7 +159,7 @@
             </svg>
       Add amount
     </button> 
-    </div><!--AI Div Start -->
+    </div><!--AI Div Start --> --}}
 
 
     <div class="mt-5 max-w-px-400">
@@ -276,13 +277,13 @@
      <div data-v-9ef0dda4="" class="p-rel d-flex items-end items-sm-center flex-wrap flex-sm-nowrap mb-6 mb-sm-4">
         <div data-v-9ef0dda4="" class="shrink-0 c-amount-control">
             <label data-v-9ef0dda4="" for="v-1720413778825-amount" class="d-sm-none mb-2">Amount</label>
-            <input data-v-9ef0dda4="" type="text" dir="auto" autocomplete="off" inputmode="numeric" class="form-control control-price" id="v-1720413778825-amount" placeholder="$5" data-qa="secondTab-amount-option-0-input">
+            <input data-v-9ef0dda4="" type="text" dir="auto" autocomplete="off" wire:model ="impactAmount1" inputmode="numeric" class="form-control control-price" id="v-1720413778825-amount" placeholder="$5" data-qa="secondTab-amount-option-0-input">
         </div>
 
         <div data-v-9ef0dda4="" class="c-hint-control min-w-0 mt-3 mt-sm-0 ms-sm-2">
             <label data-v-9ef0dda4="" for="v-1720413778825-description" class="d-sm-none mb-2">Impact description</label>
             <div data-v-9ef0dda4="" index="0" data-qa="secondTab-hint-option-0-input">
-                <input id="v-1720413778825-description" placeholder="Helps fund an awareness campaign" dir="auto" class="form-control text-ibm" style="padding-inline: 12px 0px;">
+                <input id="v-1720413778825-description" wire:model ="impactDesc1" placeholder="Helps fund an awareness campaign" dir="auto" class="form-control text-ibm" style="padding-inline: 12px 0px;">
             </div>
         </div>
     </div>
@@ -290,13 +291,13 @@
     <div data-v-9ef0dda4="" class="p-rel d-flex items-end items-sm-center flex-wrap flex-sm-nowrap mb-6 mb-sm-4">
         <div data-v-9ef0dda4="" class="shrink-0 c-amount-control">
             <label data-v-9ef0dda4="" for="v-1720413778827-amount" class="d-sm-none mb-2">Amount</label>
-            <input data-v-9ef0dda4="" type="text" dir="auto" autocomplete="off" inputmode="numeric" class="form-control control-price" id="v-1720413778827-amount" placeholder="$10" data-qa="secondTab-amount-option-1-input">
+            <input data-v-9ef0dda4="" type="text" dir="auto" autocomplete="off" wire:model ="impactAmount2" inputmode="numeric" class="form-control control-price" id="v-1720413778827-amount" placeholder="$10" data-qa="secondTab-amount-option-1-input">
         </div>
 
         <div data-v-9ef0dda4="" class="c-hint-control min-w-0 mt-3 mt-sm-0 ms-sm-2">
             <label data-v-9ef0dda4="" for="v-1720413778827-description" class="d-sm-none mb-2">Impact description</label>
             <div data-v-9ef0dda4="" index="1" data-qa="secondTab-hint-option-1-input">
-                <input id="v-1720413778827-description" placeholder="Supports our core operations" dir="auto" class="form-control text-ibm" style="padding-inline: 12px 0px;">
+                <input id="v-1720413778827-description" wire:model ="impactDesc2" placeholder="Supports our core operations" dir="auto" class="form-control text-ibm" style="padding-inline: 12px 0px;">
             </div>
         </div>
     </div>
@@ -304,18 +305,18 @@
     <div data-v-9ef0dda4="" class="p-rel d-flex items-end items-sm-center flex-wrap flex-sm-nowrap mb-6 mb-sm-4">
         <div data-v-9ef0dda4="" class="shrink-0 c-amount-control">
             <label data-v-9ef0dda4="" for="v-1720413778829-amount" class="d-sm-none mb-2">Amount</label> 
-            <input data-v-9ef0dda4="" type="text" dir="auto" autocomplete="off" inputmode="numeric" class="form-control control-price" id="v-1720413778829-amount" placeholder="$30" data-qa="secondTab-amount-option-2-input">
+            <input data-v-9ef0dda4="" type="text" dir="auto" autocomplete="off" wire:model ="impactAmount3" inputmode="numeric" class="form-control control-price" id="v-1720413778829-amount" placeholder="$30" data-qa="secondTab-amount-option-2-input">
         </div> 
 
         <div data-v-9ef0dda4="" class="c-hint-control min-w-0 mt-3 mt-sm-0 ms-sm-2">
             <label data-v-9ef0dda4="" for="v-1720413778829-description" class="d-sm-none mb-2">Impact description</label> 
             <div data-v-9ef0dda4="" index="2" data-qa="secondTab-hint-option-2-input">
-                <input id="v-1720413778829-description" placeholder="Enables us to expand our services" dir="auto" class="form-control text-ibm" style="padding-inline: 12px 0px;"> 
+                <input id="v-1720413778829-description" wire:model ="impactDesc3" placeholder="Enables us to expand our services" dir="auto" class="form-control text-ibm" style="padding-inline: 12px 0px;"> 
             </div>
         </div> 
     </div>
     <!--AI Div Start -->
-    <div id="aiDesMonth" style="display: none;">
+    {{-- <div id="aiDesMonth" style="display: none;">
     <div data-v-9ef0dda4="" class="p-rel d-flex items-end items-sm-center flex-wrap flex-sm-nowrap mb-6 mb-sm-4">
         <div data-v-9ef0dda4="" class="shrink-0 c-amount-control">
             <label data-v-9ef0dda4="" for="v-1720413778830-amount" class="d-sm-none mb-2">Amount</label> 
@@ -328,9 +329,9 @@
                 <input id="v-1720413778830-description" placeholder="Helps fund an awareness campaign" dir="auto" class="form-control text-ibm" style="padding-inline: 12px 0px;"> 
             </div>
         </div> <!---->
-    </div>
+    </div> --}}
 
-    <div data-v-9ef0dda4="" class="p-rel d-flex items-end items-sm-center flex-wrap flex-sm-nowrap mb-6 mb-sm-4">
+    {{-- <div data-v-9ef0dda4="" class="p-rel d-flex items-end items-sm-center flex-wrap flex-sm-nowrap mb-6 mb-sm-4">
         <div data-v-9ef0dda4="" class="shrink-0 c-amount-control">
             <label data-v-9ef0dda4="" for="v-1720413778832-amount" class="d-sm-none mb-2">Amount</label> 
             <input data-v-9ef0dda4="" type="text" dir="auto" autocomplete="off" inputmode="numeric" class="form-control control-price" id="v-1720413778832-amount" placeholder="$100" data-qa="secondTab-amount-option-4-input">
@@ -365,8 +366,8 @@
                 <line x1="8" y1="12" x2="16" y2="12"></line>
             </svg>
       Add amount
-    </button> 
-     </div><!--AI Div End -->
+    </button>  --}}
+     {{-- </div><!--AI Div End --> --}}
     <div class="mt-5 max-w-px-400">
         <label for="v-1720413778834-default-hint" class="mb-2">Default monthly suggested amount</label> 
         <select id="v-1720413778834-default-hint" class="form-control custom-select">
