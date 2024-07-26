@@ -9,6 +9,7 @@ use Livewire\Attributes\Title;
 use Livewire\Component;
 use DB;
 use Illuminate\Database\Query\Expression;
+use Illuminate\Http\Request;
 
 class Designations extends Component
 {
@@ -25,6 +26,7 @@ class Designations extends Component
     public function mount(CauseDetail $causeDetail)
     {
         $this->causeDetailData = $causeDetail;
+        $selected_designation = $causeDetail->selected_designation;
 
         if(!empty($causeDetail->designations)){
             $this->designations = $causeDetail->designations;
@@ -34,9 +36,9 @@ class Designations extends Component
     }
 
     public function save(){
-        //dd($this->selected_designation);
+        
         $this->validate([
-            'billingRate' => 'required',
+            'billingRate' => '',
         ]);
 
         $this->causeDetailData->update(['selected_designation' => $this->selected_designation,]);
@@ -47,10 +49,13 @@ class Designations extends Component
         }
         else
         {
-            $this->causeDetailData
-            ->update(['designations'=>DB::raw("CONCAT(designations,',".$this->billingRate."')")]);
-            $updatedValue = $this->causeDetailData->fresh()->designations;
-            $this->stringValue = $updatedValue ? (string) $updatedValue : '';
+            if($this->billingRate != null)
+            {
+                $this->causeDetailData
+                ->update(['designations'=>DB::raw("CONCAT(designations,',".$this->billingRate."')")]);
+                $updatedValue = $this->causeDetailData->fresh()->designations;
+                $this->stringValue = $updatedValue ? (string) $updatedValue : '';
+            }
         }
 
         $this->alert('success', 'Updated Successfully');
