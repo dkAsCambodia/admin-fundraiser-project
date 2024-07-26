@@ -56,14 +56,17 @@
                                                 $explodedValues = [];
                                             }
                                             @endphp
-                                            {{$causeDetailData->selected_designation}}
+                                            
                                         <select style="max-width: 280px;" class="form-control custom-select mb-6"
-                                        wire:model.lazy="selected_designation">
+                                         wire:model.live="selected_designation" id="selected_designation">
+                                                <option value="">Select a designation</option>
                                                 @foreach($explodedValues as $value)
-                                                <option value="{{ $value  }}" {{$value == $causeDetailData->selected_designation ? 'selected' : '' }}>{{ $value }}</option>
+                                                <option value="{{$value}}" {{$value == $causeDetailData->selected_designation ? 'selected' : '' }}>{{$value}}</option>
                                                 @endforeach
                                         </select>
                                     </div>
+                                    <label>Selected Designation</label></br>
+                                    <input type="text" id="selected_value" value="{{$causeDetailData->selected_designation}}" name="selected_value" class="form-control" style="max-width:280px">
                                     </div>
                                     </div>
                                 </div>
@@ -103,3 +106,9 @@
         </div>
     </div>
 </div>
+<script>
+let select = document.getElementById('selected_designation');
+  select.addEventListener('change', function() {
+    $("#selected_value").val(select.value);
+  });
+  </script>
