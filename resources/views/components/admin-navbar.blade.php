@@ -227,7 +227,9 @@ button.theme {
     height: 50px;
     width: 50px;
 }
-
+.nav-links.active {
+    border-bottom: 5px solid #1675ac;
+}
   </style>
 
   <header>
@@ -242,7 +244,7 @@ button.theme {
         <div class="bar"></div>
       </label>
       <ul class="nav-ul">
-        <li class="nav-links">
+        <li class="nav-links {{ Request::is('insights') ? 'active' : '' }}">
           <a href="/insights" wire:navigate class="nav-links-item">Insights</a>
         </li>
         <li class="nav-links">
@@ -256,14 +258,14 @@ button.theme {
               </li>
             </ul>
         </li>
-        <li class="nav-links">
+        <li class="nav-links {{ Request::is('donations') ? 'active' : '' }}">
           <a href="/donations" wire:navigate class="nav-links-item">Donations</a>
         </li>
-        <li class="nav-links">
+        <li class="nav-links {{ Request::is('campaigns') ? 'active' : '' }}">
           <a href="/campaigns" wire:navigate class="nav-links-item">Campaigns</a>
         </li>
             @if (auth()->user()->roles == App\Enums\Roles::SUPERADMIN->value && auth()->user()->roles == App\Enums\Roles::SUPERADMIN->value)
-                <li class="nav-links">
+                <li class="nav-links {{ Request::is('account/dashboard') ? 'active' : '' }}">
                     <a href="/account/dashboard" wire:navigate class="nav-links-item">Accounts</a>
                 </li>         
             @endif
@@ -274,15 +276,25 @@ button.theme {
     </nav>
   </header><br/><br/><br/>
   <script>
-	  	let mainNavLi = document.querySelectorAll(".nav-ul > .nav-links");
-		let subNavUl = document.querySelectorAll(".sub-nav-links");
-		// console.log(subNavUl);
-		mainNavLi.forEach((navLinks, index) => {
-		  if (navLinks.children.length > 1) {
-		    navLinks.addEventListener("click", () => {
-		      if (index != 0) subNavUl[index - 1].classList.toggle("show");
-		      else subNavUl[index].classList.toggle("show");
-		    });
-		  }
-		});
-  </script>
+    document.addEventListener("DOMContentLoaded", () => {
+        let mainNavLi = document.querySelectorAll(".nav-ul > .nav-links");
+        let subNavUl = document.querySelectorAll(".sub-nav-links");
+
+        mainNavLi.forEach((navLinks, index) => {
+            if (navLinks.children.length > 1) {
+                navLinks.addEventListener("click", () => {
+                    console.log("Clicked on:", navLinks);
+                    if (index != 0) {
+                        console.log("Toggling subNavUl:", subNavUl[index - 1]);
+                        subNavUl[index - 1].classList.toggle("show");
+                    } else {
+                        console.log("Toggling subNavUl:", subNavUl[index]);
+                        subNavUl[index].classList.toggle("show");
+                    }
+                });
+            }
+        });
+    });
+</script>
+
+
