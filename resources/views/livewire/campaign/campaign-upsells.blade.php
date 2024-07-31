@@ -47,7 +47,8 @@
                                     @forelse($upsells as  $key => $upsell)
                                         <b>Campaign Upsell order :</b>
                                         <input type="number" wire:model="orders.{{ $upsell->id }}" wire:change="updateOrder({{ $upsell->id }})" value="{{ $orders[$upsell->id] }}" style="width:50px;" maxlength="2">
-                                         <b></b> {{ $upsell->causeDetail?->title ?? 'no title' }} <br>
+                                         <!-- <b></b> {{ $upsell->causeDetail?->title ?? 'no title' }} <br> -->
+                                         <b></b> <a href="/campaigns/{{ $upsell->causeDetail->id }}/create"wire:navigate>{{ $upsell->causeDetail?->title ?? 'no title' }}</a> <br>
                                     @empty
                                         No Campaign Found
                                     @endforelse

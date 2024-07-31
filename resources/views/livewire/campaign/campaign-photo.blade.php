@@ -46,13 +46,15 @@
                                                             @endif
                                                         </div>
                                                     {{-- @endif --}}
-                                                    
-                                                <input type="radio" wire:model.live="isType" value="photo"
-                                                    id="istypePhoto" />
+
+                                                    <input type="radio" wire:model="upsell_card_type" value="photo"/>
+
+                                                {{--<input type="radio" wire:model.live="isType" value="photo"
+                                                    id="istypePhoto" />--}}
                                                 <label for="istypePhoto">Photo</label>
-                                                <input type="radio" wire:model.live="isType" value="video"
+                                                {{--<input type="radio" wire:model.live="isType" value="video"
                                                     id="istypeVideo" />
-                                                <label for="istypeVideo">Video</label>
+                                                <label for="istypeVideo">Video</label> --}}
 
                                                 {{-- <input type="radio" wire:model.live="isType" value="logo"
                                                     id="istypeLogo" />
@@ -79,7 +81,7 @@
                                                         @endif
                                                     </div>
                                                 @endif
-                                                @if ($isType == 'video')
+                                               {{-- @if ($isType == 'video')
                                                     <div class="mb-6">
                                                         <input
                                                             type="file"
@@ -104,12 +106,17 @@
                                                         @if($video)
                                                             <video width="50%" height="50%" class="mt-4" controls>
                                                                <source src="{{ @$video->temporaryUrl() }}" type="video/mp4"> 
-                                                               {{-- <source src="{{ asset('storage/'.$causeDetailData->video) }}" type="video/mp4"> --}}
                                                             </video> 
                                                         @endif
                                                     </div>
-                                                @endif             
-                                                    <label for="short_details" class="mb-2">Embed Video</label>
+                                                @endif    --}}         
+                                                    {{-- <label for="istypeVide" class="mb-2">Embed Video</label> --}}
+                                                    {{--<input type="radio" wire:model.live="istype" value="video"
+                                                    id="istypeVideo" />--}}
+
+                                                    <input type="radio" wire:model="upsell_card_type" value="video"/>
+
+                                                    <label for="istypeVide">Video</label>
                                                         <div class="mb-6">
                                                             <input type="text"  class="form-control"
                                                                 style="max-width:280px" wire:model.live="videoUrl"></br>
