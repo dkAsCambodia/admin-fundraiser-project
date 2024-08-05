@@ -70,7 +70,7 @@ class SuggestedAmounts extends Component
 
     public function save(){
         $data = $this->validate();
-        // dd($data['impactAmount3']);
+        // dd($data);
         $this->causeDetailData->update([
             'suggested_amounts' => $data['suggestedAmount'],
             'default_amount' => $data['defaultAmount'],

@@ -12,9 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('cause_details', function (Blueprint $table) {
-            $table->decimal('impactAmount1', 8, 2)->nullable();
-            $table->decimal('impactAmount2', 8, 2)->nullable();
-            $table->decimal('impactAmount3', 8, 2)->nullable();
+            $table->boolean('bundle_status')->default(0)->after('logo');
+            $table->string('impactAmount1')->nullable();
+            $table->string('impactAmount2')->nullable();
+            $table->string('impactAmount3')->nullable();
             $table->string('impactDesc1')->nullable();
             $table->string('impactDesc2')->nullable();
             $table->string('impactDesc3')->nullable();
@@ -27,7 +28,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('cause_details', function (Blueprint $table) {
-            $table->dropColumn(['impactAmount1', 'impactAmount2', 'impactAmount3', 'impactDesc1', 'impactDesc2', 'impactDesc3']);
+            $table->dropColumn(['bundle_status', 'impactAmount1', 'impactAmount2', 'impactAmount3', 'impactDesc1', 'impactDesc2', 'impactDesc3']);
         });
     }
 };
