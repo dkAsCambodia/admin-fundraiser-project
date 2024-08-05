@@ -17,7 +17,7 @@ class SuggestedAmounts extends Component
     public $camPage = 'setting';
     public $sideBarType = 'suggested-amounts';
     #[Rule('')]
-    public $impactAmount1, $impactAmount2, $impactAmount3, $impactDesc1, $impactDesc2, $impactDesc3;
+    public $bundle_status, $impactAmount1, $impactAmount2, $impactAmount3, $impactDesc1, $impactDesc2, $impactDesc3;
 
     public $causeDetailData;
 
@@ -44,6 +44,9 @@ class SuggestedAmounts extends Component
             $this->defaultAmount = $causeDetail->default_amount;
         }
 
+        if(!empty($causeDetail->bundle_status)){
+            $this->bundle_status = $causeDetail->bundle_status;
+        }
         if(!empty($causeDetail->impactAmount1)){
             $this->impactAmount1 = $causeDetail->impactAmount1;
         }
@@ -71,12 +74,13 @@ class SuggestedAmounts extends Component
         $this->causeDetailData->update([
             'suggested_amounts' => $data['suggestedAmount'],
             'default_amount' => $data['defaultAmount'],
+            'bundle_status' => $data['bundle_status'],
             'impactAmount1' => $data['impactAmount1'],
             'impactAmount2' => $data['impactAmount2'],
             'impactAmount3' => $data['impactAmount3'],
             'impactDesc1' => $data['impactDesc1'],
             'impactDesc2' => $data['impactDesc2'],
-            'impactDesc3' => $data['impactDesc3'],
+            'impactDesc3' => $data['impactDesc3'], 
         ]);
 
         $this->alert('success', 'Suggested Amounts Updated Successfully');
