@@ -47,8 +47,9 @@
                                                     <div data-v-ee4eaf20="" class="c-tab p-3 p-sm-5" >
                                                        
                                                          <!-- New Changes - Checkbox Added -->
-                                                         <div data-v-1d3fc6aa="" class="ui-checkbox" style="max-width: 460px;"><label class="ui-checkbox-label"><span class="ui-checkbox-control"><input type="checkbox"  data-qa="enable-hints-checkbox" id="enableHintsCheckboxOne"><span class="ui-checkbox-icon"></span></span><span data-qa="enable-hints-checkbox-field" class="ui-checkbox-text">
-                                              Enable impact descriptions
+                                                         <div data-v-1d3fc6aa="" class="ui-checkbox" style="max-width: 460px;"><label class="ui-checkbox-label"><span class="ui-checkbox-control">
+                                                            <input type="checkbox" wire:model="bundle_status" {{$bundle_status== '1' ? 'checked' : ''}} data-qa="enable-hints-checkbox" id="enableHintsCheckboxOne"><span class="ui-checkbox-icon"></span></span><span data-qa="enable-hints-checkbox-field" class="ui-checkbox-text">
+                                              Enable impact descriptions 
                                               </span></label><div data-qa="enable-hints-checkbox-hint" class="ui-checkbox-hint">
                                                 Boost supporters’ engagement and generosity by telling them how their funds might be used (e.g. “$30 can buy
                                                 school supplies for one child”).
@@ -56,7 +57,7 @@
                                               <hr data-v-1d3fc6aa="" class="my-5 my-md-6">
                                                 <!-- New Changes - Checkbox Added - End -->
                                                  <!-- New Changes - Checkbox Added - End -->
-                                              <div data-v-1d3fc6aa="" id="hintDivOne" style="display: none;">
+                                              <div data-v-1d3fc6aa="" id="hintDivOne" style="display:{{ $bundle_status== '1' ? 'block' : 'none' }};">
                                                 <p class="mb-5 mb-md-6 font-size-14 line-height-20">
                                                     <span data-qa="hints-description-for-ai-enabled">
       Fill in at least 6 impact descriptions for our AI to choose from. The more you fill in, the better, as the AI will have a wider range of amounts to choose from. Each supporter will see 3 amounts in Checkout.</span></p>
@@ -175,7 +176,7 @@
     </div>
 </div>
 <!-- new changes end --> 
-                                                        <div data-v-ee4eaf20="" id="hintDivDefaultOne"style="max-width:408px">
+                                                        <div data-v-ee4eaf20="" id="hintDivDefaultOne" style="display:{{ $bundle_status== '1' ? 'none' : 'block' }};max-width:408px">
                                                             <div class="mb-5">
                                                                 <label data-v-ee4eaf20="" for="defaultAmount"
                                                                     class="mb-2">Default one-time donation amount<span class="text-danger">*</span></label>
