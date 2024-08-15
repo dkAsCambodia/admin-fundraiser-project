@@ -39,7 +39,7 @@
                                                             one-time
                                                         </div>
                                                          <!-- New Changes - New Tab 2 name added-->
-                                                        <div data-v-ee4eaf20="" tabindex="0" data-qa="suggested-amounts-second-tab" class="tab focus-outline focus-outline-minus-2 px-sm-5">
+                                                        <div data-v-ee4eaf21="" tabindex="0" data-qa="suggested-amounts-second-tab" class="tab focus-outline focus-outline-minus-2 px-sm-5">
                                                         monthly
                                                     </div>
                                                     </div> 
