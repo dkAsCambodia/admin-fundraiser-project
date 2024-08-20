@@ -234,8 +234,36 @@
 </body>
 @livewireScripts
 
+
+<div class="header-slide-menu d-xl-none" style="display: none;">
+    <div class="mobile-menu">
+        <a href="/insights" class="d-flex focus-outline focus-outline-minus-2 header-menu-item text-nowrap" data-qa="dashboard-menu-insights"><span class="d-flex items-center"> <span>Insights</span></span></a> 
+        <a href="/donations" class="d-flex focus-outline focus-outline-minus-2 header-menu-item text-nowrap" data-qa="dashboard-menu-donations"><span class="d-flex items-center"> <span>Donations</span></span></a> 
+        <a href="/campaigns" class="d-flex focus-outline focus-outline-minus-2 header-menu-item text-nowrap" data-qa="dashboard-menu-campaigns"><span class="d-flex items-center"> <span>Campaigns</span></span></a> 
+        <a href="/account/dashboard" class="d-flex focus-outline focus-outline-minus-2 header-menu-item text-nowrap" data-qa="dashboard-menu-accounts"><span class="d-flex items-center"> <span>Accounts</span></span></a> 
+        <!--<a href="/ARYVBYTG/elements" class="d-flex focus-outline focus-outline-minus-2 header-menu-item text-nowrap router-link-exact-active active" data-qa="dashboard-menu-elements"><span class="d-flex items-center"> <span>Elements</span></span></a> 
+        <a href="/ARYVBYTG/p2p/pages" class="d-flex focus-outline focus-outline-minus-2 header-menu-item text-nowrap" data-qa="dashboard-menu-p2p"><span class="d-flex items-center"> <span>P2P</span></span></a> 
+        <a href="/ARYVBYTG/recurrings" class="d-flex focus-outline focus-outline-minus-2 header-menu-item text-nowrap" data-qa="dashboard-menu-recurrings"><span class="d-flex items-center"> <span>Recurring</span></span></a> 
+        <a href="/ARYVBYTG/supporters" class="d-flex focus-outline focus-outline-minus-2 header-menu-item text-nowrap" data-qa="dashboard-menu-supporters"><span class="d-flex items-center"> <span>Supporters</span></span></a>
+        <a href="/ARYVBYTG/exports" class="d-flex focus-outline focus-outline-minus-2 header-menu-item text-nowrap" data-qa="dashboard-menu-exports"><span class="d-flex items-center"> <span>Exports</span></span></a>  -->
+    </div>
+</div>
+
+<div class="header-slide-menu-overlay d-xl-none" id="header-slide-menu-overlay" style="display: none;"></div>    
+
 {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> --}}
 <script>
+ $('#header-slide-menu-open').click(function () {
+    $('.header-slide-menu').show();
+    $('.header-slide-menu-overlay').show();
+ });
+
+ $('#header-slide-menu-overlay').click(function () {
+    $('.header-slide-menu').hide();
+    $('.header-slide-menu-overlay').hide();
+ });
+
+
     $(window).click(function() {
         var elems = document.querySelectorAll(".select-btn-new.form-control");
         [].forEach.call(elems, function(el) {

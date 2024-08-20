@@ -437,6 +437,7 @@
 
                   <div class="d-flex d-xl-none align-items-center order-6">
                       <button type="button"
+                      id="header-slide-menu-open"
                           class="btn-reset-default d-flex border-radius-base flex-shrink-0 text-gray-60 text-nodecor focus-outline bg-transparent-hover-gray-100"
                           style="padding:11px">
                           <span class="icon-slot flex-shrink-0 line-height-18 icon-slot-18">

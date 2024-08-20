@@ -84,3 +84,15 @@ if(!function_exists('currency')) {
     }
 
 }
+
+if(!function_exists('donation_currency')) {
+    function donation_currency($amount, $currency)
+    {
+        $currency = $currency;
+        $response = Http::get('https://api.exchangerate-api.com/v4/latest/'.'USD');
+        $rates = $response->json()['rates'];
+        $result = $amount / $rates[$currency];
+        return number_format($result, 2);
+    }
+
+}
