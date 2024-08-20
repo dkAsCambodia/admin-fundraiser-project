@@ -3,6 +3,7 @@ namespace App\Livewire;
 use Livewire\Component;
 use Livewire\Attributes\Title;
 use App\Models\Transaction;
+use App\Models\User;
 
 class DonationUpsells extends Component
 {
@@ -10,6 +11,8 @@ class DonationUpsells extends Component
     public $upsellTransactionsList;
     public $TotalTransactionAmount;
     public $recordCount;
+    public $UserDetails;
+
 
     public $title;
     #[Title('Donations')]
@@ -21,6 +24,8 @@ class DonationUpsells extends Component
         $this->recordCount = $this->upsellTransactionsList->count();
         // Calculate total amount
         $this->TotalTransactionAmount = $this->upsellTransactionsList->sum('total_amount'); 
+        //dd($this->upsellTransactionsList[0]);
+        $this->UserDetails = User::where(['id' => $this->upsellTransactionsList[0]->user_id, 'status' => 1])->get();
 
     }
 
