@@ -18,7 +18,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    {{-- <div data-v-07ab28b9="" class="mx-1 d-none d-md-block">
+                                    <div data-v-07ab28b9="" class="mx-1 d-none d-md-block">
                                         <div data-v-07ab28b9="" class="d-none d-md-flex align-items-center mx-minus-2">
                                             <div data-v-07ab28b9="" class="mx-2">
                                                 <div data-v-07ab28b9="" data-qa="vt-open"></div>
@@ -50,7 +50,7 @@
                                                 </button>
                                             </div>
                                         </div>
-                                    </div> --}}
+                                    </div>
                                     <div data-v-07ab28b9="" class="mx-1 d-md-none">
                                         <div data-v-07ab28b9="" class="d-flex ml-minus-3">
                                             <div data-v-07ab28b9="" class="ml-3">
@@ -226,6 +226,69 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
+
+
+                                                        
+                                                            <div class="d-md-inline-flex ml-4">
+                                                                <div class="min-w-0">
+                                                                    <div class="align-items-center line-height-20">
+                                                                        <div
+                                                                            @class(
+                                                                                ['select-btn-new form-control', 'open' => $statusOpen]
+                                                                            )
+                                                                            wire:click="openStatus"
+                                                                            style="width: 170px !important;">
+                                                                            <span class="btn-text">Status</span>
+                                                                            <span class="arrow-dwn">
+                                                                                <i
+                                                                                    class="fa-solid fa-chevron-down"></i>
+                                                                            </span>
+                                                                        </div>
+                                                                        <ul class="list-items">
+                                                                            <li>
+                                                                                <label class="item">
+                                                                                    <input class="checkbox"
+                                                                                        wire:model.live="status"
+                                                                                        type="radio" id="statusall"
+                                                                                        value="all">
+                                                                                    <label
+                                                                                        class="item-text cursor-pointer"
+                                                                                        for="statusall">
+                                                                                        All
+                                                                                    </label>
+                                                                                </label>
+                                                                            </li>
+                                                                            <li>
+                                                                                <label class="item">
+                                                                                    <input class="checkbox"
+                                                                                        wire:model.live="status"
+                                                                                        type="radio" id="status1"
+                                                                                        value="success">
+                                                                                    <label
+                                                                                        class="item-text cursor-pointer"
+                                                                                        for="status1">
+                                                                                        Active
+                                                                                    </label>
+                                                                                </label>
+                                                                            </li>
+                                                                            <li>
+                                                                                <label class="item">
+                                                                                    <input class="checkbox"
+                                                                                        wire:model.live="status"
+                                                                                        type="radio" id="status0"
+                                                                                        value="Pendding">
+                                                                                    <label
+                                                                                        class="item-text cursor-pointer"
+                                                                                        for="status0">
+                                                                                        Inactive
+                                                                                    </label>
+                                                                                </label>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -254,6 +317,33 @@
                                                             </div>
                                                         </div>
                                                         <div data-v-42ed51cc=""
+                                                            class="d-th bg-gray-10-hover-gray-10 text-gray-100 w-30">
+                                                            <div data-v-42ed51cc="" class="d-flex align-items-center">
+                                                                <div data-v-42ed51cc=""
+                                                                    class="font-size-12 line-height-16 font-weight-600 text-uppercase">
+                                                                    DONATION
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div data-v-42ed51cc=""
+                                                            class="d-th bg-gray-10-hover-gray-10 text-gray-100 w-30">
+                                                            <div data-v-42ed51cc="" class="d-flex align-items-center">
+                                                                <div data-v-42ed51cc=""
+                                                                    class="font-size-12 line-height-16 font-weight-600 text-uppercase">
+                                                                    FEE COVERED
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div data-v-42ed51cc=""
+                                                            class="d-th bg-gray-10-hover-gray-10 text-gray-100 w-30">
+                                                            <div data-v-42ed51cc="" class="d-flex align-items-center">
+                                                                <div data-v-42ed51cc=""
+                                                                    class="font-size-12 line-height-16 font-weight-600 text-uppercase">
+                                                                    SUPPORTER
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- <div data-v-42ed51cc=""
                                                             class="d-th bg-gray-10-hover-gray-10 text-gray-100 w-30">
                                                             <div data-v-42ed51cc="" class="d-flex align-items-center">
                                                                 <div data-v-42ed51cc=""
@@ -290,7 +380,7 @@
                                                                     currency
                                                                 </div>
                                                             </div>
-                                                        </div>
+                                                        </div> -->
                                                         <div data-v-42ed51cc=""
                                                             class="d-th bg-gray-10-hover-gray-10 text-gray-100 w-30">
                                                             <div data-v-42ed51cc="" class="d-flex align-items-center">
@@ -310,6 +400,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                
                                                 @forelse ($donationData as $donation)
                                                     <div wire:click="goToView({{$donation->id}})" style=" cursor: pointer;" data-v-42ed51cc="" class="d-tbody">
                                                         <div class="d-td">
@@ -318,6 +409,35 @@
                                                             </div>
                                                         </div>
                                                         <div class="d-td">
+                                                       @if($donation->currency_symbol != '$') 
+                                                            <div title="" class="text-truncate max-w-px-200">
+                                                                <span class="font-size-14 font-size-sm-16 line-height-20 line-height-sm-24 text-gray-85 text-ellipsis">
+                                                                    ≈&nbsp;{{$donation->currency_symbol}}{{ $donation->total_amount }}
+                                                                </span>
+                                                                <i class="fa fa-credit-card" aria-hidden="true"></i>
+                                                                <svg data-v-c3b336fe="" svg-inline="" focusable="false" role="presentation" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" class="icon-stroke"><polyline data-v-c3b336fe="" points="23 4 23 10 17 10"></polyline><path data-v-c3b336fe="" d="M20.49 15a9 9 0 11-2.12-9.36L23 10"></path></svg>
+                                                            </div>
+                                                        @else                                
+                                                            <div title="" class="text-truncate max-w-px-200">
+                                                                <span class="font-size-14 font-size-sm-16 line-height-20 line-height-sm-24 text-gray-85 text-ellipsis">
+                                                                    ${{ $donation->total_amount }}
+                                                                </span>
+                                                                <i class="fa fa-credit-card" aria-hidden="true"></i>
+                                                                <svg data-v-c3b336fe="" svg-inline="" focusable="false" role="presentation" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" class="icon-stroke"><polyline data-v-c3b336fe="" points="23 4 23 10 17 10"></polyline><path data-v-c3b336fe="" d="M20.49 15a9 9 0 11-2.12-9.36L23 10"></path></svg>
+                                                            </div>
+                                                        @endif
+                                                        </div>
+                                                        <div class="d-td">
+                                                            <div title="" class="text-truncate max-w-px-200">
+                                                                Covered
+                                                            </div>
+                                                        </div>
+                                                        <div class="d-td">
+                                                            <div title="" class="text-truncate max-w-px-200">
+                                                            {{@$donation->userDetail->name}}
+                                                            </div>
+                                                        </div>
+                                                        <!-- <div class="d-td">
                                                             <div title="" class="text-truncate max-w-px-200">
                                                                 {{ $donation->accountDetail->account_name }}
                                                             </div>
@@ -336,7 +456,7 @@
                                                             <div title="" class="text-truncate max-w-px-200">
                                                                 {{ $donation->currency }}
                                                             </div>
-                                                        </div>
+                                                        </div> -->
                                                         <div class="d-td">
                                                             <div title="" class="text-truncate max-w-px-200">
                                                                 @if ($donation->status == 'success')

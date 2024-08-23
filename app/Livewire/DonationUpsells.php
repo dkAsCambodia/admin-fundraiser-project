@@ -4,6 +4,7 @@ use Livewire\Component;
 use Livewire\Attributes\Title;
 use App\Models\Transaction;
 use App\Models\User;
+use PDF;
 
 class DonationUpsells extends Component
 {
@@ -12,6 +13,7 @@ class DonationUpsells extends Component
     public $TotalTransactionAmount;
     public $recordCount;
     public $UserDetails;
+    public $Ipaddress;
 
 
     public $title;
@@ -27,6 +29,30 @@ class DonationUpsells extends Component
         //dd($this->upsellTransactionsList[0]);
         $this->UserDetails = User::where(['id' => $this->upsellTransactionsList[0]->user_id, 'status' => 1])->get();
 
+    }
+
+    public function downloadPdf()
+    {
+        // Data to pass to the PDF view
+        
+        $data = ['title' => 'Official donation receipt', 
+                    'name' => $this->UserDetails[0]->name, 
+                    'donation_amount' => $this->upsellTransactionsList[0]->total_amount,
+                    'designation' => $this->upsellTransactionsList[0]->causeDetail->selected_designation,
+                    'donation_date' => $this->upsellTransactionsList[0]->causeDetail->created_at,
+                    'receipt_number' => $this->upsellTransactionsList[0]->transaction_id,
+                    'date_issued' => $this->upsellTransactionsList[0]->causeDetail->updated_at,
+                    'email' => $this->UserDetails[0]->email,
+                    'campaign' => $this->upsellTransactionsList[0]->causeDetail->title,
+                 ];
+
+        // Load a view to render into PDF
+        $pdf = PDF::loadView('pdf.my-pdf-view', $data);
+
+        // Download the generated PDF
+        return response()->streamDownload(function () use ($pdf) {
+            echo $pdf->output();
+        }, 'Donation_receipt.pdf');
     }
 
     public function render()
