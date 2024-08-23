@@ -23,6 +23,7 @@ use App\Livewire\CampaignsArchive;
 use App\Livewire\Donations;
 use App\Livewire\DonationUpsells;
 use App\Livewire\Insights;
+use App\Livewire\PdfDownload;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -50,6 +51,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/insights', Insights::class);
     Route::get('/donations', Donations::class);
     Route::get('/donation/{MainTransactionId}', DonationUpsells::class);
+    Route::get('/donation/{Id}', PdfDownload::class);
     Route::get('/campaigns', Campaigns::class);
     Route::get('/campaigns-archive', CampaignsArchive::class);
     Route::get('/campaigns/{causeDetail}/create', Create::class);

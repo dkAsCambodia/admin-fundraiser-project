@@ -18,6 +18,7 @@ class Donations extends Component
     public $startDate, $endDate, $dateSpanData;
     public $accounts = [];
     public $campaigns = [];
+    public $statusOpen = false;
 
     public $accountOpen = false;
     public $campaignOpen = false;
@@ -36,6 +37,16 @@ class Donations extends Component
             $this->accountOpen = false;
         } else {
             $this->accountOpen = true;
+        }
+    }
+
+    public function openStatus()
+    {
+        $this->accountOpen = false;
+        if ($this->statusOpen === true) {
+            $this->statusOpen = false;
+        } else {
+            $this->statusOpen = true;
         }
     }
 
@@ -83,6 +94,10 @@ class Donations extends Component
                 // ->orWhere('account_name', 'LIKE', '%' . $this->search . '%')
         })->with(['userDetail:id,name', 'accountDetail:id,account_name', 'causeDetail:id,title']);
 
+        if ($this->status != 'all') {
+            $donation = $donation->where('status', $this->status);
+        }
+
         $donation->whereBetween(\DB::raw('DATE(created_at)'), [$this->startDate, $this->endDate])->orderby('id', 'desc')->get();
 
         // $donation = Transaction::where(function ($query) {
@@ -101,6 +116,7 @@ class Donations extends Component
             $donation = $donation->whereIn('account_id', $this->accounts);
         }
         $donation = $donation->whereIn('cause_detail_id', $this->campaigns);
+
         $donationData = $donation->paginate(10);
 
         return view('livewire.donations', [

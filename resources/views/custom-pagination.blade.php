@@ -81,7 +81,8 @@
                         @if (isset($total) && $total)
                         @else
                             <span>
-                                {{ count($paginator->items()) }} Results Showing In {{ $paginator->total() }} records
+                            {{--   {{ count($paginator->items()) }} Results Showing In {{ $paginator->total() }} records  --}}
+                            {{ $paginator->total() }} records
                             </span>
                         @endif
                     </div>
