@@ -90,7 +90,7 @@ class Donations extends Component
     public function render()
     {
         $donation = Transaction::where(function ($query) {
-            $query->where('transaction_id', 'LIKE', '%' . $this->transactionId . '%')->whereNull('upsell_campaignId');
+            $query->where('transaction_id', 'LIKE', '%' . $this->transactionId . '%')->where('status', 'success')->whereNull('upsell_campaignId');
                 // ->orWhere('account_name', 'LIKE', '%' . $this->search . '%')
         })->with(['userDetail:id,name', 'accountDetail:id,account_name', 'causeDetail:id,title']);
 

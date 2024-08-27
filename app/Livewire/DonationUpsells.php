@@ -26,9 +26,8 @@ class DonationUpsells extends Component
         $this->recordCount = $this->upsellTransactionsList->count();
         // Calculate total amount
         $this->TotalTransactionAmount = $this->upsellTransactionsList->sum('total_amount'); 
-        //dd($this->upsellTransactionsList[0]);
+        
         $this->UserDetails = User::where(['id' => $this->upsellTransactionsList[0]->user_id, 'status' => 1])->get();
-
     }
 
     public function downloadPdf()
