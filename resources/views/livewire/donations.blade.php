@@ -23,7 +23,7 @@
                                             <div data-v-07ab28b9="" class="mx-2">
                                                 <div data-v-07ab28b9="" data-qa="vt-open"></div>
                                             </div>
-                                            <div data-v-07ab28b9="" class="mx-2">
+                                            <!-- <div data-v-07ab28b9="" class="mx-2">
                                                 <button data-v-07ab28b9="" data-qa="quick-export-button"
                                                     class="btn btn-default">
                                                     <div data-v-07ab28b9="" class="d-flex">
@@ -48,7 +48,7 @@
                                                         <div data-v-07ab28b9="">Quick export</div>
                                                     </div>
                                                 </button>
-                                            </div>
+                                            </div> -->
                                         </div>
                                     </div>
                                     <div data-v-07ab28b9="" class="mx-1 d-md-none">
@@ -409,23 +409,23 @@
                                                             </div>
                                                         </div>
                                                         <div class="d-td">
-                                                       @if($donation->currency_symbol != '$') 
+                                                       {{-- @if($donation->currency_symbol != '$') --}}
+                                                            <!-- <div title="" class="text-truncate max-w-px-200">
+                                                                <span class="font-size-14 font-size-sm-16 line-height-20 line-height-sm-24 text-gray-85 text-ellipsis">
+                                                                    ≈&nbsp;{{$donation->currency}}{{ $donation->total_amount }}
+                                                                </span>
+                                                                <i class="fa fa-credit-card" aria-hidden="true"></i>
+                                                                <svg data-v-c3b336fe="" svg-inline="" focusable="false" role="presentation" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" class="icon-stroke"><polyline data-v-c3b336fe="" points="23 4 23 10 17 10"></polyline><path data-v-c3b336fe="" d="M20.49 15a9 9 0 11-2.12-9.36L23 10"></path></svg>
+                                                            </div> -->
+                                                            {{-- @else --}}                               
                                                             <div title="" class="text-truncate max-w-px-200">
                                                                 <span class="font-size-14 font-size-sm-16 line-height-20 line-height-sm-24 text-gray-85 text-ellipsis">
-                                                                    ≈&nbsp;{{$donation->currency_symbol}}{{ $donation->total_amount }}
+                                                                    ${{ donation_currency($donation->total_amount, $donation->currency) }}
                                                                 </span>
                                                                 <i class="fa fa-credit-card" aria-hidden="true"></i>
                                                                 <svg data-v-c3b336fe="" svg-inline="" focusable="false" role="presentation" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" class="icon-stroke"><polyline data-v-c3b336fe="" points="23 4 23 10 17 10"></polyline><path data-v-c3b336fe="" d="M20.49 15a9 9 0 11-2.12-9.36L23 10"></path></svg>
                                                             </div>
-                                                        @else                                
-                                                            <div title="" class="text-truncate max-w-px-200">
-                                                                <span class="font-size-14 font-size-sm-16 line-height-20 line-height-sm-24 text-gray-85 text-ellipsis">
-                                                                    ${{ $donation->total_amount }}
-                                                                </span>
-                                                                <i class="fa fa-credit-card" aria-hidden="true"></i>
-                                                                <svg data-v-c3b336fe="" svg-inline="" focusable="false" role="presentation" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" class="icon-stroke"><polyline data-v-c3b336fe="" points="23 4 23 10 17 10"></polyline><path data-v-c3b336fe="" d="M20.49 15a9 9 0 11-2.12-9.36L23 10"></path></svg>
-                                                            </div>
-                                                        @endif
+                                                            {{-- @endif --}}
                                                         </div>
                                                         <div class="d-td">
                                                             <div title="" class="text-truncate max-w-px-200">

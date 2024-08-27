@@ -27,12 +27,18 @@ class Insights extends Component
 
     public $accountOpen = false;
     public $campaignOpen = false;
+    public $frequencyOpen = false;
+    public $designationOpen = false;
+    public $designationData;
 
     public $accountView = true;
+    
 
     public function openAccount()
     {
         $this->campaignOpen = false;
+        $this->designationOpen = false;
+        $this->frequencyOpen = false;
         if ($this->accountOpen === true) {
             $this->accountOpen = false;
         } else {
@@ -43,10 +49,36 @@ class Insights extends Component
     public function openCampaign()
     {
         $this->accountOpen = false;
+        $this->designationOpen = false;
+        $this->frequencyOpen = false;
         if ($this->campaignOpen === true) {
             $this->campaignOpen = false;
         } else {
             $this->campaignOpen = true;
+        }
+    }
+
+    public function openFrequency()
+    {
+        $this->accountOpen = false;
+        $this->campaignOpen = false;
+        $this->designationOpen = false;
+        if ($this->frequencyOpen === true) {
+            $this->frequencyOpen = false;
+        } else {
+            $this->frequencyOpen = true;
+        }
+    }
+
+    public function openDesignation()
+    {
+        $this->accountOpen = false;
+        $this->campaignOpen = false;
+        $this->frequencyOpen = false;
+        if ($this->designationOpen === true) {
+            $this->designationOpen = false;
+        } else {
+            $this->designationOpen = true;
         }
     }
 
@@ -64,8 +96,10 @@ class Insights extends Component
             $this->accounts = auth()->user()->id;
         }
         $this->campaignData = $queryCampaign->select('id', 'title')->get();
-
+        
         $this->campaigns = $queryCampaign->pluck('id');
+
+        $this->designationData = $queryCampaign->select('id','selected_designation')->whereNotNull('selected_designation')->get()->unique('selected_designation');
 
         $this->getDataPerMounth();
         $this->getDataPerHour();
@@ -115,11 +149,10 @@ class Insights extends Component
             ->perMonth()
             ->sum('amount');
 
-//dd($dataCount, $dataSum);
         $this->lineChartDonationLabels = $dataCount->map(fn(TrendValue $value) => date('M', strtotime($value->date)));
         $this->lineChartDonationDatasetSum = $dataSum->map(fn(TrendValue $value) => $value->aggregate);
         $this->lineChartDonationDatasetCount = $dataCount->map(fn(TrendValue $value) => $value->aggregate);
-//dd($this->lineChartDonationLabels,$this->lineChartDonationDatasetSum,$this->lineChartDonationDatasetCount);
+        //dd($this->lineChartDonationLabels,$this->lineChartDonationDatasetSum,$this->lineChartDonationDatasetCount);
         // 'labels' => $pendingData->map(fn (TrendValue $value) => date('F',strtotime($value->date))),
     }
     public function getDataPerDay()

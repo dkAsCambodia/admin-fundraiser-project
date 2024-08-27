@@ -121,6 +121,159 @@
                                                     </div>
                                                 </div>
                                             </div>
+
+                                            <div class="d-md-inline-flex ml-4">
+                                                                <div class="min-w-0">
+                                                                    <div class="align-items-center line-height-20">
+                                                                        <div
+                                                                            @class(
+                                                                                ['select-btn-new form-control', 'open' => $frequencyOpen]
+                                                                            )
+                                                                            wire:click="openFrequency"
+                                                                            style="width: 170px !important;">
+                                                                            <span class="btn-text">Frequency</span>
+                                                                            <span class="arrow-dwn">
+                                                                                <i
+                                                                                    class="fa-solid fa-chevron-down"></i>
+                                                                            </span>
+                                                                        </div>
+                                                                        <ul class="list-items">
+                                                                            <li>
+                                                                                <label class="item">
+                                                                                    <input class="checkbox"
+                                                                                        wire:model.live="default_frequency"
+                                                                                        type="radio" id="frequencyall"
+                                                                                        value="all">
+                                                                                    <label
+                                                                                        class="item-text cursor-pointer"
+                                                                                        for="frequencyall">
+                                                                                        All
+                                                                                    </label>
+                                                                                </label>
+                                                                            </li>
+                                                                            <li>
+                                                                                <label class="item">
+                                                                                    <input class="checkbox"
+                                                                                        wire:model.live="default_frequency"
+                                                                                        type="radio" id="frequency1"
+                                                                                        value="once">
+                                                                                    <label
+                                                                                        class="item-text cursor-pointer"
+                                                                                        for="frequency1">
+                                                                                        Once
+                                                                                    </label>
+                                                                                </label>
+                                                                            </li>
+                                                                            <li>
+                                                                                <label class="item">
+                                                                                    <input class="checkbox"
+                                                                                        wire:model.live="default_frequency"
+                                                                                        type="radio" id="frequency0"
+                                                                                        value="monthly">
+                                                                                    <label
+                                                                                        class="item-text cursor-pointer"
+                                                                                        for="frequency0">
+                                                                                        Monthly
+                                                                                    </label>
+                                                                                </label>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                            <div class="d-md-inline-flex ml-5">
+                                                <div class="min-w-0">
+                                                    <div class="align-items-center line-height-20">
+                                                        <div
+                                                            @class(['select-btn-new form-control', 'open' => $designationOpen])
+                                                            wire:click="openDesignation" style="width: 170px !important;">
+                                                            <span class="btn-text">Designation</span>
+                                                            <span class="arrow-dwn">
+                                                                <i class="fa-solid fa-chevron-down"></i>
+                                                            </span>
+                                                        </div>
+                                                        <ul class="list-items">
+                                                            @forelse ($designationData as $key => $camp)
+                                                                <li>
+                                                                    <label class="item">
+                                                                        <input class="checkbox"
+                                                                            wire:model.live="selected_designation" type="checkbox"
+                                                                            id="campaigns{{ $key }}"
+                                                                            value="{{ $camp->id }}" checked>
+                                                                        <label class="item-text cursor-pointer"
+                                                                            for="campaigns{{ $key }}">
+                                                                            {{ $camp->selected_designation }}
+                                                                        </label>
+                                                                    </label>
+                                                                </li>
+                                                            @empty
+                                                            @endforelse
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                                            <!-- <div class="d-md-inline-flex ml-4">
+                                                                <div class="min-w-0">
+                                                                    <div class="align-items-center line-height-20">
+                                                                        <div
+                                                                            @class(
+                                                                                ['select-btn-new form-control', 'open' => $designationOpen]
+                                                                            )
+                                                                            wire:click="openDesignation"
+                                                                            style="width: 170px !important;">
+                                                                            <span class="btn-text">Designation</span>
+                                                                            <span class="arrow-dwn">
+                                                                                <i
+                                                                                    class="fa-solid fa-chevron-down"></i>
+                                                                            </span>
+                                                                        </div>
+                                                                        <ul class="list-items">
+                                                                            <li>
+                                                                                <label class="item">
+                                                                                    <input class="checkbox"
+                                                                                        wire:model.live="selected_designation"
+                                                                                        type="radio" id="designationall"
+                                                                                        value="all">
+                                                                                    <label
+                                                                                        class="item-text cursor-pointer"
+                                                                                        for="designationall">
+                                                                                        All
+                                                                                    </label>
+                                                                                </label>
+                                                                            </li>
+                                                                            <li>
+                                                                                <label class="item">
+                                                                                    <input class="checkbox"
+                                                                                        wire:model.live="selected_designation"
+                                                                                        type="radio" id="designation1"
+                                                                                        value="gaza">
+                                                                                    <label
+                                                                                        class="item-text cursor-pointer"
+                                                                                        for="designation1">
+                                                                                        Once
+                                                                                    </label>
+                                                                                </label>
+                                                                            </li>
+                                                                            <li>
+                                                                                <label class="item">
+                                                                                    <input class="checkbox"
+                                                                                        wire:model.live="selected_designation"
+                                                                                        type="radio" id="designation0"
+                                                                                        value="yemen">
+                                                                                    <label
+                                                                                        class="item-text cursor-pointer"
+                                                                                        for="designation0">
+                                                                                        Monthly
+                                                                                    </label>
+                                                                                </label>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div> -->
+
                                         </div>
                                     </div>
                                 </div>
