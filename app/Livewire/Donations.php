@@ -9,6 +9,8 @@ use App\Models\User;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 use Livewire\WithPagination;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Response;
 
 class Donations extends Component
 {
@@ -65,6 +67,32 @@ class Donations extends Component
         $transaction = Transaction::where(['id' => $id])->first();
         $main_trans_id = base64_encode($transaction->main_transaction_id);
         $this->redirect('/donation/' . $main_trans_id);
+    }
+
+    public function export()
+    {
+        // Fetch data to be exported
+        $transactions = Transaction::all();
+
+        // Create a CSV file
+        $fileName = 'Transaction.csv';
+        $filePath = storage_path('app/public/' . $fileName);
+        
+        $file = fopen($filePath, 'w');
+
+        // Add CSV headers
+        fputcsv($file, ['ID', 'Transaction_ID', 'Futrure_payment_id', 'Amount', 'Frequency', 'Gateway_name', 'Message', 'Currency', 'Status', 'Time_zone', 'Date']);
+
+        // Add rows to the CSV
+        foreach ($transactions as $transaction) {
+            fputcsv($file, [$transaction->id, $transaction->transaction_id, $transaction->future_payment_custId, $transaction->total_amount, $transaction->frequency, $transaction->gateway_name, $transaction->message, $transaction->currency, $transaction->status, $transaction->payment_timezone, $transaction->created_at->format('M d, Y, h:i A')]);
+        }
+
+        // Close the file
+        fclose($file);
+
+        // Return the file as a response for download
+        return Response::download($filePath)->deleteFileAfterSend(true);
     }
 
     public function mount()
