@@ -23,8 +23,8 @@
                                             <div data-v-07ab28b9="" class="mx-2">
                                                 <div data-v-07ab28b9="" data-qa="vt-open"></div>
                                             </div>
-                                            <!-- <div data-v-07ab28b9="" class="mx-2">
-                                                <button data-v-07ab28b9="" data-qa="quick-export-button"
+                                            <div data-v-07ab28b9="" class="mx-2">
+                                                <button data-v-07ab28b9="" wire:click="export" data-qa="quick-export-button"
                                                     class="btn btn-default">
                                                     <div data-v-07ab28b9="" class="d-flex">
                                                         <div data-v-07ab28b9="" class="mr-2">
@@ -48,7 +48,7 @@
                                                         <div data-v-07ab28b9="">Quick export</div>
                                                     </div>
                                                 </button>
-                                            </div> -->
+                                            </div>
                                         </div>
                                     </div>
                                     <div data-v-07ab28b9="" class="mx-1 d-md-none">
