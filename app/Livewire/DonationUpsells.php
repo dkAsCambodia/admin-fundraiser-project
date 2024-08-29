@@ -5,6 +5,7 @@ use Livewire\Attributes\Title;
 use App\Models\Transaction;
 use App\Models\User;
 use PDF;
+use Stevebauman\Location\Facades\Location;
 
 class DonationUpsells extends Component
 {
@@ -14,6 +15,7 @@ class DonationUpsells extends Component
     public $recordCount;
     public $UserDetails;
     public $Ipaddress;
+    public $Location;
 
 
     public $title;
@@ -28,6 +30,12 @@ class DonationUpsells extends Component
         $this->TotalTransactionAmount = $this->upsellTransactionsList->sum('total_amount'); 
         
         $this->UserDetails = User::where(['id' => $this->upsellTransactionsList[0]->user_id, 'status' => 1])->get();
+
+        $ip= request()->ip()=='127.0.0.1' ? '103.246.195.106' : request()->ip();
+        // India IP Address : 103.246.195.106  for testing 103.146.44.34, US 130.58.218.30
+        $position = \Location::get($ip);
+        $this->Ipaddress = $position->ip;
+        $this->Location = $position->countryName;
     }
 
     public function downloadPdf()
