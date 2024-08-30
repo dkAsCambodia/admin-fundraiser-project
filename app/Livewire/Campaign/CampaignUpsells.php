@@ -48,6 +48,7 @@ class CampaignUpsells extends Component
                     return [
                         'id' => $cause_detail->id,
                         'title' => $cause_detail->title,
+                        'status' => $cause_detail->status,
                     ];
                 }),
             ];
@@ -57,8 +58,6 @@ class CampaignUpsells extends Component
        //for campaign id list
         $this->campaignUpsellIds = $this->upsells->pluck('campaign_upsellId')->toArray();
        
-        
-
     }    
     public function upsellsData(){
         $this->upsells = Upsell::where('mainCampaign_id', $this->causeDetailData->id)->with('causeDetail')->orderBy('order', 'ASC')->get(['id', 'campaign_upsellId', 'order']);
