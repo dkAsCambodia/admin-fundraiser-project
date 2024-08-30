@@ -26,8 +26,10 @@
                                         <select style=" height:200px;" class="js-example-placeholder-multiple js-states form-control" multiple="multiple" wire:model="campaign_upsellId">
                                             @foreach($usersWithProducts as $userData)
                                                 <optgroup label="{{ $userData['user_name'] }}">
-                                                    @foreach($userData['products'] as $product)                                  
+                                                    @foreach($userData['products'] as $product) 
+                                                    @if($product['status'] == 1)                                 
                                                         <option value="{{ $product['id'] }}" selected="selected">{{ $product['title'] }}</option>
+                                                    @endif
                                                     @endforeach
                                                 </optgroup>    
                                             @endforeach
@@ -80,8 +82,7 @@
         </div>
       </div>
     </div>
-    <script>
-        
+    <script>  
      </script>
    
   </div>
