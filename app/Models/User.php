@@ -51,4 +51,9 @@ class User extends Authenticatable
         return $this->hasMany(CauseDetail::class, 'account_id', 'id');
     }
 
+    public function informations()
+    {
+        return $this->hasOne(UserInformation::class, 'user_id', 'id');
+    }
+
 }

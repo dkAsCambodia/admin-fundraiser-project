@@ -45,10 +45,38 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div data-v-07ab28b9="">Quick export</div>
+                                                        <div data-v-07ab28b9="">Quick export CSV</div>
                                                     </div>
                                                 </button>
                                             </div>
+
+                                            <div data-v-07ab28b9="" class="mx-2">
+                                                <button data-v-07ab28b9="" wire:click="excel_export" data-qa="quick-export-button"
+                                                    class="btn btn-default">
+                                                    <div data-v-07ab28b9="" class="d-flex">
+                                                        <div data-v-07ab28b9="" class="mr-2">
+                                                            <div data-v-07ab28b9="" class="icon-slot icon-slot-18">
+                                                                <div data-v-07ab28b9=""
+                                                                    class="p-abs centered font-size-18">
+                                                                    <svg data-v-07ab28b9="" svg-inline=""
+                                                                        focusable="false" role="presentation"
+                                                                        width="18" height="18"
+                                                                        viewBox="0 0 18 18" fill="none"
+                                                                        xmlns="http://www.w3.org/2000/svg"
+                                                                        class="icon-fill">
+                                                                        <path data-v-07ab28b9="" fill-rule="evenodd"
+                                                                            clip-rule="evenodd"
+                                                                            d="M12.896 1.147a.5.5 0 000 .707L15.042 4H11.4a2.9 2.9 0 00-2.9 2.9v5.2a.5.5 0 001 0V6.9A1.9 1.9 0 0111.4 5h3.644l-2.148 2.147a.5.5 0 00.707.707l3-3a.5.5 0 000-.707l-3-3a.5.5 0 00-.707 0zM3 9.5a.5.5 0 01.5.5v5a1 1 0 001 1h9a1 1 0 001-1v-5a.5.5 0 011 0v5a2 2 0 01-2 2h-9a2 2 0 01-2-2v-5a.5.5 0 01.5-.5z"
+                                                                            fill="currentColor"></path>
+                                                                    </svg>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div data-v-07ab28b9="">Quick export Excel</div>
+                                                    </div>
+                                                </button>
+                                            </div>
+
                                         </div>
                                     </div>
                                     <div data-v-07ab28b9="" class="mx-1 d-md-none">
