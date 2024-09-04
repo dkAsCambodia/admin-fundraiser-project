@@ -141,6 +141,7 @@ class Campaigns extends Component
         $data['moneybased'] = 'moneybased';
         $data['photo'] = 'campaignPhoto/default_image.jpg';
         $data['logo'] = 'campaignPhoto/default_logo.jpeg';
+        $data['upsell_card_type'] = 'photo';
        
         $causeDetails = CauseDetail::create($data);
 
