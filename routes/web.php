@@ -72,6 +72,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::group(['middleware' => ['auth.superAdmin']], function() {
         Route::get('/account/dashboard', Dashboard::class);
         Route::get('/account/create', \App\Livewire\Account\Create::class);
+        Route::get('/account/analytics', \App\Livewire\Account\Analytics::class);
         Route::get('/account/{user}/edit', \App\Livewire\Account\Create::class);
         Route::get('/account/table', Table::class);
         Route::get('/setting/personal', PersonalProfile::class);
