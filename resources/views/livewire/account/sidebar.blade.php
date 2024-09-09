@@ -62,6 +62,23 @@
                     </span>
                     <span class="flex-grow-1 min-w-0 text-ellipsis">Add Account</span>
                 </a>
+
+                <a href="/account/analytics" wire:navigate
+                    class="menu-item menu-item-link focus-outline focus-outline-minus-2 @if($sideBarType == 'analytics') router-link-exact-active menu-item-active @endif"
+                    qa="settings-link-profile" tabindex="0">
+                    <span class="icon-slot flex-shrink-0 mr-3 icon-slot-18">
+                        <span class="p-abs centered font-size-18">
+                        <svg stroke-linejoin="round" stroke-linecap="round" stroke-width="1.4" stroke="currentColor" 
+                            fill="none" viewBox="0 0 24 24" height="24" width="24" xmlns="http://www.w3.org/2000/svg" 
+                            class="icon-stroke d-block">
+                            <path xmlns="http://www.w3.org/2000/svg" d="M21.21 15.89A10 10 0 1 1 8 2.83"></path>
+                            <path xmlns="http://www.w3.org/2000/svg" d="M22 12A10 10 0 0 0 12 2v10z"></path>
+                        </svg>
+                        </span>
+                    </span>
+                    <span class="flex-grow-1 min-w-0 text-ellipsis">Analytics tools</span>
+                </a>
+
             </div>
             <div data-v-67596529="" class="d-flex d-md-block mt-md-4"></div>
 
