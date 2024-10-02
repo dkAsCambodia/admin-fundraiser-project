@@ -164,9 +164,10 @@
                                                         </span>
                                                     </a>
                                                 </div>
+                                                <input type="hidden" id="hidden-url-input" value="{{ env('SITE_URL') }}cause-detail/{{ $causeDetailData->slug }}" readonly>
                                                 <div data-v-71ccdb84="" class="mt-0-5 d-lg-flex">
-                                                    <button data-v-71ccdb84="" type="button" wire:click="copy()"
-                                                        data-qa="overview-copy-link"
+                                                    <button data-v-71ccdb84="" type="button" 
+                                                        data-qa="overview-copy-link" id="copy-button"
                                                         class="btn-link d-block text-gray-85-hover-gray-100 focus-outline"
                                                         data-click-id="$19" data-keyup-id="$20">
                                                         <span data-v-71ccdb84="">Copy URL</span>
@@ -1277,3 +1278,25 @@
         </div>
     </div>
 </div>
+
+<script>
+        document.getElementById('copy-button').addEventListener('click', function () {
+            // Get the value from the hidden input
+            var hiddenValue = document.getElementById('hidden-url-input').value;
+            var button = document.getElementById('copy-button');
+
+            // Use Clipboard API to copy the value
+            navigator.clipboard.writeText(hiddenValue).then(function() {
+                // Change button text to "✓ Copied"
+                button.innerHTML = '✓ Copied';
+
+                // Optionally, reset the button text after a few seconds
+                setTimeout(function() {
+                    button.innerHTML = 'Copy URL';
+                }, 3000); // 2 seconds delay to reset the button
+            }).catch(function(err) {
+                console.error('Failed to copy text: ', err);
+                alert('Failed to copy text.');
+            });
+        });
+    </script>

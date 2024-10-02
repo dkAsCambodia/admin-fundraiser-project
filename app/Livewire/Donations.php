@@ -26,10 +26,12 @@ class Donations extends Component
 
     public $accountOpen = false;
     public $campaignOpen = false;
+    public $frequencyOpen = false;
 
     public $title;
     public $transactionId;
     public $status = 'all';
+    public $default_frequency = 'all';
     public $id;
 
     public $accountView = true;
@@ -37,6 +39,8 @@ class Donations extends Component
     public function openAccount()
     {
         $this->campaignOpen = false;
+        $this->frequencyOpen = false;
+        $this->statusOpen = false;
         if ($this->accountOpen === true) {
             $this->accountOpen = false;
         } else {
@@ -47,6 +51,8 @@ class Donations extends Component
     public function openStatus()
     {
         $this->accountOpen = false;
+        $this->frequencyOpen = false;
+        $this->campaignOpen = false;
         if ($this->statusOpen === true) {
             $this->statusOpen = false;
         } else {
@@ -57,10 +63,24 @@ class Donations extends Component
     public function openCampaign()
     {
         $this->accountOpen = false;
+        $this->statusOpen = false;
+        $this->frequencyOpen = false;
         if ($this->campaignOpen === true) {
             $this->campaignOpen = false;
         } else {
             $this->campaignOpen = true;
+        }
+    }
+
+    public function openFrequency()
+    {
+        $this->accountOpen = false;
+        $this->campaignOpen = false;
+        $this->statusOpen = false;
+        if ($this->frequencyOpen === true) {
+            $this->frequencyOpen = false;
+        } else {
+            $this->frequencyOpen = true;
         }
     }
 
@@ -336,6 +356,10 @@ class Donations extends Component
 
         if ($this->status != 'all') {
             $donation = $donation->where('status', $this->status);
+        }
+
+        if ($this->default_frequency != 'all') {
+            $donation = $donation->where('frequency', $this->default_frequency);
         }
 
         $donation->whereBetween(\DB::raw('DATE(created_at)'), [$this->startDate, $this->endDate])->orderby('id', 'desc')->get();
