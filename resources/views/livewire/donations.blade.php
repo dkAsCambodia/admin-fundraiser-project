@@ -317,6 +317,66 @@
                                                                 </div>
                                                             </div>
 
+                                                            <div class="d-md-inline-flex ml-4">
+                                                                <div class="min-w-0">
+                                                                    <div class="align-items-center line-height-20">
+                                                                        <div
+                                                                            @class(
+                                                                                ['select-btn-new form-control', 'open' => $frequencyOpen]
+                                                                            )
+                                                                            wire:click="openFrequency"
+                                                                            style="width: 170px !important;">
+                                                                            <span class="btn-text">Frequency</span>
+                                                                            <span class="arrow-dwn">
+                                                                                <i
+                                                                                    class="fa-solid fa-chevron-down"></i>
+                                                                            </span>
+                                                                        </div>
+                                                                        <ul class="list-items">
+                                                                            <li>
+                                                                                <label class="item">
+                                                                                    <input class="checkbox"
+                                                                                        wire:model.live="default_frequency"
+                                                                                        type="radio" id="frequencyall"
+                                                                                        value="all">
+                                                                                    <label
+                                                                                        class="item-text cursor-pointer"
+                                                                                        for="frequencyall">
+                                                                                        All
+                                                                                    </label>
+                                                                                </label>
+                                                                            </li>
+                                                                            <li>
+                                                                                <label class="item">
+                                                                                    <input class="checkbox"
+                                                                                        wire:model.live="default_frequency"
+                                                                                        type="radio" id="frequency1"
+                                                                                        value="once">
+                                                                                    <label
+                                                                                        class="item-text cursor-pointer"
+                                                                                        for="frequency1">
+                                                                                        Once
+                                                                                    </label>
+                                                                                </label>
+                                                                            </li>
+                                                                            <li>
+                                                                                <label class="item">
+                                                                                    <input class="checkbox"
+                                                                                        wire:model.live="default_frequency"
+                                                                                        type="radio" id="frequency0"
+                                                                                        value="monthly">
+                                                                                    <label
+                                                                                        class="item-text cursor-pointer"
+                                                                                        for="frequency0">
+                                                                                        Monthly
+                                                                                    </label>
+                                                                                </label>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -451,7 +511,9 @@
                                                                     ${{ donation_currency($donation->total_amount, $donation->currency) }}
                                                                 </span>
                                                                 <i class="fa fa-credit-card" aria-hidden="true"></i>
+                                                                @if($donation->frequency == 'monthly')
                                                                 <svg data-v-c3b336fe="" svg-inline="" focusable="false" role="presentation" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" class="icon-stroke"><polyline data-v-c3b336fe="" points="23 4 23 10 17 10"></polyline><path data-v-c3b336fe="" d="M20.49 15a9 9 0 11-2.12-9.36L23 10"></path></svg>
+                                                                @endif
                                                             </div>
                                                             {{-- @endif --}}
                                                         </div>

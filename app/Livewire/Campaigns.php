@@ -39,6 +39,7 @@ class Campaigns extends Component
     public function openAccount()
     {
         $this->statusOpen = false;
+        $this->paymentOpen = false;
         if ($this->accountOpen === true) {
             $this->accountOpen = false;
         } else {
@@ -49,6 +50,7 @@ class Campaigns extends Component
     public function openStatus()
     {
         $this->accountOpen = false;
+        $this->paymentOpen = false;
         if ($this->statusOpen === true) {
             $this->statusOpen = false;
         } else {
@@ -59,6 +61,7 @@ class Campaigns extends Component
     public function openPayment()
     {
         $this->accountOpen = false;
+        $this->statusOpen = false;
         if ($this->paymentOpen === true) {
             $this->paymentOpen = false;
         } else {
