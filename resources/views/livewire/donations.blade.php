@@ -295,7 +295,7 @@
                                                                                     <label
                                                                                         class="item-text cursor-pointer"
                                                                                         for="status1">
-                                                                                        Active
+                                                                                        Success
                                                                                     </label>
                                                                                 </label>
                                                                             </li>
@@ -308,7 +308,7 @@
                                                                                     <label
                                                                                         class="item-text cursor-pointer"
                                                                                         for="status0">
-                                                                                        Inactive
+                                                                                        Pending
                                                                                     </label>
                                                                                 </label>
                                                                             </li>
@@ -396,6 +396,15 @@
                                                 <div data-v-42ed51cc="" class="d-thead">
                                                     <div data-v-42ed51cc="" class="d-tr">
                                                         <div data-v-42ed51cc=""
+                                                            class="d-th bg-gray-10-hover-gray-10 text-gray-100 w-10">
+                                                            <div data-v-42ed51cc="" class="d-flex align-items-center">
+                                                                <div data-v-42ed51cc=""
+                                                                    class="font-size-12 line-height-16 font-weight-600 text-uppercase">
+                                                                   
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div data-v-42ed51cc=""
                                                             class="d-th bg-gray-10-hover-gray-10 text-gray-100 w-30">
                                                             <div data-v-42ed51cc="" class="d-flex align-items-center">
                                                                 <div data-v-42ed51cc=""
@@ -431,7 +440,7 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <!-- <div data-v-42ed51cc=""
+                                                        <div data-v-42ed51cc=""
                                                             class="d-th bg-gray-10-hover-gray-10 text-gray-100 w-30">
                                                             <div data-v-42ed51cc="" class="d-flex align-items-center">
                                                                 <div data-v-42ed51cc=""
@@ -441,7 +450,7 @@
                                                             </div>
                                                         </div>
 
-                                                        <div data-v-42ed51cc=""
+                                                        <!--<div data-v-42ed51cc=""
                                                             class="d-th bg-gray-10-hover-gray-10 text-gray-100 w-30">
                                                             <div data-v-42ed51cc="" class="d-flex align-items-center">
                                                                 <div data-v-42ed51cc=""
@@ -474,14 +483,6 @@
                                                             <div data-v-42ed51cc="" class="d-flex align-items-center">
                                                                 <div data-v-42ed51cc=""
                                                                     class="font-size-12 line-height-16 font-weight-600 text-uppercase">
-                                                                    Status</div>
-                                                            </div>
-                                                        </div>
-                                                        <div data-v-42ed51cc=""
-                                                            class="d-th bg-gray-10-hover-gray-10 text-gray-100 w-30">
-                                                            <div data-v-42ed51cc="" class="d-flex align-items-center">
-                                                                <div data-v-42ed51cc=""
-                                                                    class="font-size-12 line-height-16 font-weight-600 text-uppercase">
                                                                     CAMPAIGN
                                                                 </div>
                                                             </div>
@@ -491,6 +492,15 @@
                                                 
                                                 @forelse ($donationData as $donation)
                                                     <div wire:click="goToView({{$donation->id}})" style=" cursor: pointer;" data-v-42ed51cc="" class="d-tbody">
+                                                        <div class="d-td">
+                                                            <div title="" class="text-truncate max-w-px-200">
+                                                            @if($donation->status == 'success')
+                                                                <svg data-v-2db7373e="" svg-inline="" focusable="false" role="presentation" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" class="icon-stroke d-block text-success"><polyline data-v-2db7373e="" points="20 6 9 17 4 12"></polyline><title>Succeeded</title></svg>
+                                                            @else                    
+                                                                <svg data-v-2db7373e="" svg-inline="" focusable="false" role="presentation" fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg" stroke-width="1.4" class="icon-stroke d-block text-gray-75"><path data-v-2db7373e="" d="M12.393 7.661a1.315 1.315 0 000 1.842l2.104 2.104a1.315 1.315 0 001.842 0l4.959-4.959a7.892 7.892 0 01-10.445 10.445l-4.09 4.09a2.79 2.79 0 01-3.946-3.947l4.09-4.09A7.893 7.893 0 0117.352 2.703l-4.946 4.946z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path><title>Retrying</title></svg>
+                                                            @endif    
+                                                            </div>
+                                                        </div>
                                                         <div class="d-td">
                                                             <div title="" class="text-truncate max-w-px-200">
                                                                 {{ $donation->created_at->format('M d, Y, h:i A') }}
@@ -507,12 +517,22 @@
                                                             </div> -->
                                                             {{-- @else --}}                               
                                                             <div title="" class="text-truncate max-w-px-200">
+                                                            @if($donation->currency == 'USD')
                                                                 <span class="font-size-14 font-size-sm-16 line-height-20 line-height-sm-24 text-gray-85 text-ellipsis">
                                                                     ${{ donation_currency($donation->total_amount, $donation->currency) }}
                                                                 </span>
-                                                                <i class="fa fa-credit-card" aria-hidden="true"></i>
+                                                            @else
+                                                                <span class="font-size-14 font-size-sm-16 line-height-20 line-height-sm-24 text-gray-85 text-ellipsis" data-toggle="tooltip" title="{{$donation->currency_symbol}} {{$donation->total_amount}} {{$donation->currency}}">
+                                                                ≈ ${{ donation_currency($donation->total_amount, $donation->currency) }}
+                                                                </span>
+                                                            @endif    
+                                                                @if($donation->gateway_name == 'Stripe')
+                                                                <i class="fa fa-credit-card" data-toggle="tooltip" title="Credit Card"></i>
+                                                                @elseif($donation->gateway_name == 'Paypal')
+                                                                <i class="fab fa-paypal" data-toggle="tooltip" title="PayPal"></i>
+                                                                @endif
                                                                 @if($donation->frequency == 'monthly')
-                                                                <svg data-v-c3b336fe="" svg-inline="" focusable="false" role="presentation" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" class="icon-stroke"><polyline data-v-c3b336fe="" points="23 4 23 10 17 10"></polyline><path data-v-c3b336fe="" d="M20.49 15a9 9 0 11-2.12-9.36L23 10"></path></svg>
+                                                                <svg data-v-c3b336fe="" svg-inline="" focusable="false" role="presentation" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" class="icon-stroke"><polyline data-v-c3b336fe="" points="23 4 23 10 17 10"></polyline><path data-v-c3b336fe="" d="M20.49 15a9 9 0 11-2.12-9.36L23 10"></path><title>Installment</title></svg>
                                                                 @endif
                                                             </div>
                                                             {{-- @endif --}}
@@ -524,15 +544,18 @@
                                                         </div>
                                                         <div class="d-td">
                                                             <div title="" class="text-truncate max-w-px-200">
-                                                            {{@$donation->userDetail->name}}
+                                                                {{@$donation->userDetail->name}} 
+                                                                @if($donation->frequency == 'monthly')
+                                                                 <i class="fa fa-mobile" data-toggle="tooltip" title="Mobile Donation"></i>
+                                                                @endif
                                                             </div>
                                                         </div>
-                                                        <!-- <div class="d-td">
+                                                        <div class="d-td">
                                                             <div title="" class="text-truncate max-w-px-200">
                                                                 {{ $donation->accountDetail->account_name }}
                                                             </div>
                                                         </div>
-                                                        <div class="d-td">
+                                                        <!-- <div class="d-td">
                                                             <div title="" class="text-truncate">
                                                                 {{ $donation->main_transaction_id }}
                                                             </div>
@@ -546,16 +569,7 @@
                                                             <div title="" class="text-truncate max-w-px-200">
                                                                 {{ $donation->currency }}
                                                             </div>
-                                                        </div> -->
-                                                        <div class="d-td">
-                                                            <div title="" class="text-truncate max-w-px-200">
-                                                                @if ($donation->status == 'success')
-                                                                    <button class="btn btn-success text text-light">Success</button>
-                                                                @else
-                                                                <b><button class="btn btn-danger text text-light">Pending</button></b>
-                                                                @endif
-                                                            </div>
-                                                        </div>
+                                                        </div>-->
                                                         <div class="d-td">
                                                             @if ($donation->status == 'success')
                                                                 <a href="/donation/{{ base64_encode($donation->main_transaction_id) }}" wire:navigate><div title="" class="text-truncate max-w-px-200">
@@ -563,7 +577,10 @@
                                                                 </div>
                                                                 </a>
                                                             @else
+                                                            <a href="/donation/{{ base64_encode($donation->main_transaction_id) }}" wire:navigate><div title="" class="text-truncate max-w-px-200">
                                                             <strong>{{ $donation->causeDetail->title }}</strong>
+                                                            </div>
+                                                            </a>
                                                             @endif
                                                             
                                                         </div>

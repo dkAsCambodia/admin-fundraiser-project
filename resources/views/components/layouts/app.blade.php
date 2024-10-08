@@ -355,6 +355,12 @@
     //New changes End
 </script>
 
+<script>
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+</script>
+
 @stack('scripts')
 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

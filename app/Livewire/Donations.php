@@ -350,7 +350,7 @@ class Donations extends Component
     public function render()
     {
         $donation = Transaction::where(function ($query) {
-            $query->where('transaction_id', 'LIKE', '%' . $this->transactionId . '%')->where('status', 'success')->whereNull('upsell_campaignId');
+            $query->where('transaction_id', 'LIKE', '%' . $this->transactionId . '%');
                 // ->orWhere('account_name', 'LIKE', '%' . $this->search . '%')
         })->with(['userDetail:id,name', 'accountDetail:id,account_name', 'causeDetail:id,title']);
 
@@ -362,7 +362,8 @@ class Donations extends Component
             $donation = $donation->where('frequency', $this->default_frequency);
         }
 
-        $donation->whereBetween(\DB::raw('DATE(created_at)'), [$this->startDate, $this->endDate])->orderby('id', 'desc')->get();
+        //$donation->whereBetween(\DB::raw('DATE(created_at)'), [$this->startDate, $this->endDate])->orderby('id', 'desc')->get();
+            $donation->orderby('id', 'desc')->get();
 
         // $donation = Transaction::where(function ($query) {
         //     $query->where('transaction_id', 'LIKE', '%' . $this->transactionId . '%');
