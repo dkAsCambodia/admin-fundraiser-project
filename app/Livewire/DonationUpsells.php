@@ -24,7 +24,7 @@ class DonationUpsells extends Component
     public function mount()
     {
         // Fetch records where main_transaction_id is 1
-        $this->upsellTransactionsList = Transaction::where(['main_transaction_id' => base64_decode($this->MainTransactionId), 'status' => 'success'])->get();
+        $this->upsellTransactionsList = Transaction::where(['main_transaction_id' => base64_decode($this->MainTransactionId)])->get();
         $this->recordCount = $this->upsellTransactionsList->count();
         // Calculate total amount
         $this->TotalTransactionAmount = $this->upsellTransactionsList->sum('total_amount'); 
