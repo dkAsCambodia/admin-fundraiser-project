@@ -1,7 +1,6 @@
-
 <div class="content-row">
     <div class="d-table-cell text-top">
-        <div data-v-450355e1="" data-qa="donation-page" class="p-rel"><!----> <!----> 
+        <div data-v-450355e1="" data-qa="donation-page" class="p-rel">
             <div data-v-450355e1="" class="container mt-6 mt-xl-10">
                 <div data-v-450355e1="" class="row"><div data-v-450355e1="" class="col-lg-9">
                     <div data-v-450355e1="">
