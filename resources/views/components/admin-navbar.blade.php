@@ -2,7 +2,7 @@
   {{-- admin_panel/favicon.png --}}
   <style>
       .logoClass {
-          width: 100%;
+          width: 35%;
       }
 
       @media only screen and (max-width: 600px) {
