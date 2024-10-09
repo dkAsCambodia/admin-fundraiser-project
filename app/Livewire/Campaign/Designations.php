@@ -35,6 +35,29 @@ class Designations extends Component
         $this->stringValue = $updatedValue ? (string) $updatedValue : '';
     }
 
+    public function removeDesignation($id, $tagToRemove)
+    {
+        $model = CauseDetail::find($id);
+
+        // Explode the comma-separated string into an array
+        $designations = explode(',', $model->designations);
+
+        // Remove the tag from the array
+        $designations = array_filter($designations, function ($designation) use ($tagToRemove) {
+            return $designation !== $tagToRemove;
+        });
+
+        // Implode the array back into a comma-separated string
+        $updatedTags = implode(',', $designations);
+
+        $model->designations = $updatedTags;
+        $model->selected_designation = NULL;
+        $model->save();
+        $this->alert('success', 'Deleted Successfully');
+        return redirect()->to('/campaigns/'.$id.'/designations');
+    }
+
+
     public function save(){
         
         $this->validate([
